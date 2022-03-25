@@ -14,7 +14,10 @@ namespace ProjetoFinal.Service
 
         public Publication Create(Publication publication)
         {
-            throw new NotImplementedException();
+            context.Publications.Add(publication);
+            context.SaveChanges();
+            return publication;
+            
         }
 
         public Publication GetById(int id)

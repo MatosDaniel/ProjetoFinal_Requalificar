@@ -11,6 +11,7 @@ namespace ProjetoFinal.Controllers
         private readonly IConfiguration config;
         private readonly IJWTService tokenService;
         private readonly IUserService userService;
+        private readonly IPublicationService publicationService;
 
         public HomeController(IConfiguration config, IJWTService tokenService, IUserService userService)
         {
@@ -111,8 +112,9 @@ namespace ProjetoFinal.Controllers
         }
 
         [HttpGet]
-        public IActionResult Profile(User user)
+        public IActionResult Profile(UserViewModel user)
         {
+            ViewData["Username"] = user.Username; 
             string token = HttpContext.Session.GetString("Token");
 
             if (token == null)
@@ -131,6 +133,33 @@ namespace ProjetoFinal.Controllers
 
             ViewBag.Token = token;
             return View(user);
+        }
+
+        public IActionResult LogOut()
+        {
+            return View();
+        }
+
+        [AllowAnonymous]
+        [HttpPost]
+        public IActionResult LogoutUser()
+        {
+            HttpContext.Session.Remove("Token");
+            return (RedirectToAction("Index"));
+        }
+
+        public IActionResult CreatePublication()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> CreatePublication(Publication publication)
+        {
+            if (publication is not null)
+            {
+                publicationService.Create(publication);
+            }
         }
     }
 }

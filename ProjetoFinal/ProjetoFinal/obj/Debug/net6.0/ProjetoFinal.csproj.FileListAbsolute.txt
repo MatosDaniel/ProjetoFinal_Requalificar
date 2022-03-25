@@ -20,10 +20,6 @@ C:\Users\Net19\Desktop\ProjetoFinal_Requalificar\ProjetoFinal\ProjetoFinal\bin\D
 C:\Users\Net19\Desktop\ProjetoFinal_Requalificar\ProjetoFinal\ProjetoFinal\bin\Debug\net6.0\Microsoft.Win32.SystemEvents.dll
 C:\Users\Net19\Desktop\ProjetoFinal_Requalificar\ProjetoFinal\ProjetoFinal\bin\Debug\net6.0\MySql.Data.dll
 C:\Users\Net19\Desktop\ProjetoFinal_Requalificar\ProjetoFinal\ProjetoFinal\bin\Debug\net6.0\Ubiety.Dns.Core.dll
-C:\Users\Net19\Desktop\ProjetoFinal_Requalificar\ProjetoFinal\ProjetoFinal\bin\Debug\net6.0\Zstandard.Net.dll
-C:\Users\Net19\Desktop\ProjetoFinal_Requalificar\ProjetoFinal\ProjetoFinal\bin\Debug\net6.0\MySql.Data.EntityFrameworkCore.dll
-C:\Users\Net19\Desktop\ProjetoFinal_Requalificar\ProjetoFinal\ProjetoFinal\bin\Debug\net6.0\Renci.SshNet.dll
-C:\Users\Net19\Desktop\ProjetoFinal_Requalificar\ProjetoFinal\ProjetoFinal\bin\Debug\net6.0\SshNet.Security.Cryptography.dll
 C:\Users\Net19\Desktop\ProjetoFinal_Requalificar\ProjetoFinal\ProjetoFinal\bin\Debug\net6.0\Swashbuckle.AspNetCore.Swagger.dll
 C:\Users\Net19\Desktop\ProjetoFinal_Requalificar\ProjetoFinal\ProjetoFinal\bin\Debug\net6.0\Swashbuckle.AspNetCore.SwaggerGen.dll
 C:\Users\Net19\Desktop\ProjetoFinal_Requalificar\ProjetoFinal\ProjetoFinal\bin\Debug\net6.0\Swashbuckle.AspNetCore.SwaggerUI.dll
@@ -32,7 +28,6 @@ C:\Users\Net19\Desktop\ProjetoFinal_Requalificar\ProjetoFinal\ProjetoFinal\bin\D
 C:\Users\Net19\Desktop\ProjetoFinal_Requalificar\ProjetoFinal\ProjetoFinal\bin\Debug\net6.0\System.Security.Cryptography.ProtectedData.dll
 C:\Users\Net19\Desktop\ProjetoFinal_Requalificar\ProjetoFinal\ProjetoFinal\bin\Debug\net6.0\System.Security.Permissions.dll
 C:\Users\Net19\Desktop\ProjetoFinal_Requalificar\ProjetoFinal\ProjetoFinal\bin\Debug\net6.0\System.Windows.Extensions.dll
-C:\Users\Net19\Desktop\ProjetoFinal_Requalificar\ProjetoFinal\ProjetoFinal\bin\Debug\net6.0\System.Xml.XPath.XmlDocument.dll
 C:\Users\Net19\Desktop\ProjetoFinal_Requalificar\ProjetoFinal\ProjetoFinal\bin\Debug\net6.0\runtimes\win\lib\netcoreapp3.0\Microsoft.Win32.SystemEvents.dll
 C:\Users\Net19\Desktop\ProjetoFinal_Requalificar\ProjetoFinal\ProjetoFinal\bin\Debug\net6.0\runtimes\unix\lib\netcoreapp3.0\System.Drawing.Common.dll
 C:\Users\Net19\Desktop\ProjetoFinal_Requalificar\ProjetoFinal\ProjetoFinal\bin\Debug\net6.0\runtimes\win\lib\netcoreapp3.0\System.Drawing.Common.dll
@@ -120,3 +115,12 @@ C:\Users\mauza\OneDrive\Ambiente de Trabalho\ProjetoFinal_Requalificar\ProjetoFi
 C:\Users\mauza\OneDrive\Ambiente de Trabalho\ProjetoFinal_Requalificar\ProjetoFinal\ProjetoFinal\obj\Debug\net6.0\scopedcss\projectbundle\ProjetoFinal.bundle.scp.css
 C:\Users\mauza\OneDrive\Ambiente de Trabalho\ProjetoFinal_Requalificar\ProjetoFinal\ProjetoFinal\obj\Debug\net6.0\ProjetoFinal.csproj.CopyComplete
 C:\Users\mauza\OneDrive\Ambiente de Trabalho\ProjetoFinal_Requalificar\ProjetoFinal\ProjetoFinal\obj\Debug\net6.0\ProjetoFinal.genruntimeconfig.cache
+C:\Users\Net19\Desktop\ProjetoFinal_Requalificar\ProjetoFinal\ProjetoFinal\bin\Debug\net6.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+C:\Users\Net19\Desktop\ProjetoFinal_Requalificar\ProjetoFinal\ProjetoFinal\bin\Debug\net6.0\Microsoft.IdentityModel.JsonWebTokens.dll
+C:\Users\Net19\Desktop\ProjetoFinal_Requalificar\ProjetoFinal\ProjetoFinal\bin\Debug\net6.0\Microsoft.IdentityModel.Logging.dll
+C:\Users\Net19\Desktop\ProjetoFinal_Requalificar\ProjetoFinal\ProjetoFinal\bin\Debug\net6.0\Microsoft.IdentityModel.Protocols.dll
+C:\Users\Net19\Desktop\ProjetoFinal_Requalificar\ProjetoFinal\ProjetoFinal\bin\Debug\net6.0\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+C:\Users\Net19\Desktop\ProjetoFinal_Requalificar\ProjetoFinal\ProjetoFinal\bin\Debug\net6.0\Microsoft.IdentityModel.Tokens.dll
+C:\Users\Net19\Desktop\ProjetoFinal_Requalificar\ProjetoFinal\ProjetoFinal\bin\Debug\net6.0\ZstdNet.dll
+C:\Users\Net19\Desktop\ProjetoFinal_Requalificar\ProjetoFinal\ProjetoFinal\bin\Debug\net6.0\MySql.EntityFrameworkCore.dll
+C:\Users\Net19\Desktop\ProjetoFinal_Requalificar\ProjetoFinal\ProjetoFinal\bin\Debug\net6.0\System.IdentityModel.Tokens.Jwt.dll
