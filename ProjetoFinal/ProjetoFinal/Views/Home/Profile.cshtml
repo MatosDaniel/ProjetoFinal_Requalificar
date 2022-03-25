@@ -1,0 +1,21 @@
+﻿@model ProjetoFinal.Models.UserViewModel
+@{
+    ViewData["Title"] = "User Details";
+}
+
+
+<div class="text-center">
+    <h1 class="display-4">Welcome @Model.Username</h1>
+    
+
+<h2>Your Profile Details</h2>
+<address>    
+    <br> Username: @Model.Username </br>
+    <br> Email: @Model.Email </br>
+    <br> Password: @Model.Password </br>
+    <br> First Name: @Model.FirstName </br>
+    <br> Last Name: @Model.LastName </br>
+    <br> Gender: @Model.Gender </br>
+    <br> Mobile: @Model.Mobile </br>
+</address>
+</div>

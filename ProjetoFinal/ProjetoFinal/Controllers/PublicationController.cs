@@ -78,20 +78,10 @@ namespace ProjetoFinal.Controllers
                 return NotFound();
             }
         }
-
-        public IActionResult Login()
-        {
-            return View();
-        }
-
-        public IActionResult SignUp()
-        {
-            return View();
-        }
-        
+        /*
         public async Task<IActionResult> SignUp(User user)
         {
 
-        }
+        } */
     }
 }

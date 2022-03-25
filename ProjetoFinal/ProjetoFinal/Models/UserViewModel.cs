@@ -1,8 +1,7 @@
 ﻿namespace ProjetoFinal.Models
 {
-    public class User //Criação da classe User e dos seus atributos e propriedades
+    public class UserViewModel
     {
-        public int Id { get; set; }
         public string Username { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }

@@ -8,9 +8,13 @@ namespace ProjetoFinal.Data
         {
             var user = new User()
             {
+                Username = "Pedrinho",
                 FirstName = "Pedro",
                 LastName = "Santos",
-                Email = "pedrosantos@gmail.com"
+                Email = "pedrosantos@gmail.com",
+                Password = "batatasfritas",
+                Gender = "Male",
+                Mobile = 937772380
             };
             context.Users.Add(user);
 
