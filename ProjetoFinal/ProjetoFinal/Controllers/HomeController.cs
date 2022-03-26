@@ -13,11 +13,12 @@ namespace ProjetoFinal.Controllers
         private readonly IUserService userService;
         private readonly IPublicationService publicationService;
 
-        public HomeController(IConfiguration config, IJWTService tokenService, IUserService userService)
+        public HomeController(IConfiguration config, IJWTService tokenService, IUserService userService, IPublicationService publicationService)
         {
             this.config = config;
             this.tokenService = tokenService;
             this.userService = userService;
+            this.publicationService = publicationService;
         }
 
         public IActionResult Index()
@@ -112,27 +113,34 @@ namespace ProjetoFinal.Controllers
         }
 
         [HttpGet]
-        public IActionResult Profile(UserViewModel user)
+        public IActionResult Profile(int id)
         {
-            ViewData["Username"] = user.Username; 
-            string token = HttpContext.Session.GetString("Token");
-
-            if (token == null)
+            var user = userService.GetById(id);
+            if (user == null)
             {
-                return (RedirectToAction("Index"));
+                return NotFound();
             }
-
-            if (!tokenService.IsTokenValid(
-                config["Jwt:Key"].ToString(),
-                config["Jwt:Issuer"].ToString(),
-                config["Jwt:Audience"].ToString(),
-                token))
+            else
             {
-                return (RedirectToAction("Index"));
-            }
+                string token = HttpContext.Session.GetString("Token");
 
-            ViewBag.Token = token;
-            return View(user);
+                if (token == null)
+                {
+                    return (RedirectToAction("Index"));
+                }
+
+                if (!tokenService.IsTokenValid(
+                    config["Jwt:Key"].ToString(),
+                    config["Jwt:Issuer"].ToString(),
+                    config["Jwt:Audience"].ToString(),
+                    token))
+                {
+                    return (RedirectToAction("Index"));
+                }
+
+                ViewBag.Token = token;
+                return View(user);
+            }
         }
 
         public IActionResult LogOut()
@@ -153,6 +161,7 @@ namespace ProjetoFinal.Controllers
             return View();
         }
 
+        /*
         [HttpPost]
         public async Task<IActionResult> CreatePublication(Publication publication)
         {
@@ -160,6 +169,6 @@ namespace ProjetoFinal.Controllers
             {
                 publicationService.Create(publication);
             }
-        }
+        } */
     }
 }
