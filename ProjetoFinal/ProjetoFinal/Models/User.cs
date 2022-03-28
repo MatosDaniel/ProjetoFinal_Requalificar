@@ -7,6 +7,8 @@ namespace ProjetoFinal.Models
     {
         public int UserId { get; set; }
 
+        // [Index(IsUnique = true)] //https://docs.microsoft.com/en-us/ef/ef6/modeling/code-first/data-annotations
+                                 //https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/compiler-messages/cs0592?f1url=%3FappId%3Droslyn%26k%3Dk(CS0592)
         public string Username { get; set; }
 
         public string FirstName { get; set; }
