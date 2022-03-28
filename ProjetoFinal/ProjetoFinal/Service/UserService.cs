@@ -33,9 +33,27 @@ namespace ProjetoFinal.Service
             }
         }
 
-        public void Edit(int id, User user)
+        public User Edit(int id, User user)
         {
-            throw new NotImplementedException();
+            var userToUpdate = context.Users.Find(id);
+            if (userToUpdate is null)
+            {
+                throw new NullReferenceException("User does not exist");
+            }
+            else
+            {
+                userToUpdate.Username = user.Username;
+                userToUpdate.Password = user.Password;
+                userToUpdate.FirstName = user.FirstName;
+                userToUpdate.LastName = user.LastName;
+                userToUpdate.Gender = user.Gender;
+                userToUpdate.Mobile = user.Mobile;
+                userToUpdate.Email = user.Email;
+
+                context.SaveChanges();
+
+                return userToUpdate;
+            }
         }
 
         public User? FindByEmail(string email)
