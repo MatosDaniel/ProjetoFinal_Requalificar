@@ -86,26 +86,39 @@ namespace ProjetoFinal.Controllers
             return View();
         }
 
+        //[AllowAnonymous]
+        //[HttpPost]
+        //public async Task<IActionResult> SignUp(User user)
+        //{
+        //    if (ModelState.IsValid)
+        //    {
+        //        var userExists = userService.FindByEmail(user.Email);
+        //        if (userExists != null)
+        //            return StatusCode(StatusCodes.Status500InternalServerError, "User already exists!");
+
+
+        //        var newUser = userService.Create(user);
+        //        if (newUser is not null)
+        //            return RedirectToAction(nameof(Index));
+        //        else
+        //            return RedirectToAction(nameof(Error));
+        //    }
+        //    else
+        //    {
+        //        return RedirectToAction(nameof(Error));
+        //    }
+        //}
+
         [AllowAnonymous]
         [HttpPost]
-        public async Task<IActionResult> SignUp(User user)
+        public IActionResult SignUp(User user)
         {
             if (ModelState.IsValid)
             {
-                var userExists = userService.FindByEmail(user.Email);
-                if (userExists != null)
-                    return StatusCode(StatusCodes.Status500InternalServerError, "User already exists!");
-
-                var newUser = userService.Create(user);
-                if (newUser is not null)
-                    return RedirectToAction(nameof(Index));
-                else
-                    return RedirectToAction(nameof(Error));
+                userService.Create(user);
+                return RedirectToAction("Index");
             }
-            else
-            {
-                return RedirectToAction(nameof(Error));
-            }
+            return View(user);
         }
 
         [HttpGet]
