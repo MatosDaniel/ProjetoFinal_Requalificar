@@ -186,5 +186,35 @@ namespace ProjetoFinal.Controllers
                 publicationService.EditPublication(publication);
                 return RedirectToAction(nameof(Index));
         }
+
+        [HttpPost]
+        public async Task<IActionResult> Delete(int id)
+        {
+            userService.Delete(id);
+            return RedirectToAction(nameof(Index));
+        }
+
+        //public IActionResult Delete(string isbn)
+        //{
+        //    var modelDelete = service.GetByISBN(isbn);
+        //    return View(modelDelete);
+        //}
+
+        //[HttpPost]
+        //public async Task<IActionResult> ConfirmDelete(string isbn)
+        //{
+        //    if (ModelState.IsValid)
+        //    {
+        //        service.DeleteByISBN(isbn);
+        //        if (isbn is not null)
+        //            return RedirectToAction(nameof(Index));
+        //        else
+        //            return RedirectToAction(nameof(Error));
+        //    }
+        //    else
+        //    {
+        //        return RedirectToAction(nameof(Error));
+        //    }
+        //}
     }
 }

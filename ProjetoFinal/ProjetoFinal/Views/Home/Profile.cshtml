@@ -9,17 +9,20 @@
     
 
 <h2>Your Profile Details</h2>
-<address>    
-    <br> Username: @Model.Username </br>
-    <br> Email: @Model.Email </br>
-    <br> Password: @Model.Password </br>
-    <br> First Name: @Model.FirstName </br>
-    <br> Last Name: @Model.LastName </br>
-    <br> Gender: @Model.Gender </br>
-    <br> Mobile: @Model.Mobile </br>
-</address>
+<form asp-action="Delete" asp-route-id="@Model.UserId">
+    <address>    
+        <br> Username: @Model.Username </br>
+        <br> Email: @Model.Email </br>
+        <br> Password: @Model.Password </br>
+        <br> First Name: @Model.FirstName </br>
+        <br> Last Name: @Model.LastName </br>
+        <br> Gender: @Model.Gender </br>
+        <br> Mobile: @Model.Mobile </br>
+    </address>
+    <button class="btn btn-danger" type="submit">Delete</button>
+</form>
 
-@foreach(var pub in Model.Publications)
+@*@foreach(var pub in Model.)
     {
         if(pub.User.UserId == @Model.UserId)
         {
@@ -28,18 +31,19 @@
                     @pub.Text
                 </td>
                 <td>
+                    @Model.Username
                 </td>
                 <td>
                     @pub.Time
                 </td>
                 <td>
                     <a asp-action="EditPublication" asp-route-id="@pub.IdPub">Edit</a> |
-@*                    <a asp-action="Details" asp-route-isbn="@item.ISBN">Details</a> |
-                    <a asp-action="Delete" asp-route-isbn="@item.ISBN">Delete</a>*@
+                    <a asp-action="Details" asp-route-isbn="@item.ISBN">Details</a> |
+                    <a asp-action="Delete" asp-route-isbn="@item.ISBN">Delete</a>
                 </td>
             </tr>
         }
-    }
+    }*@
 
 
 </div>

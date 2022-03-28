@@ -18,9 +18,19 @@ namespace ProjetoFinal.Service
             return user;
         }
 
-        public void Delete(User user)
+        public void Delete(int id)
         {
-            throw new NotImplementedException();
+            var user = context.Users.Find(id);
+            if (user is not null)
+            {
+                context.Users.Remove(user);
+                context.SaveChanges();
+
+            }
+            else
+            {
+                throw new NullReferenceException("User not found");
+            }
         }
 
         public void Edit(int id, User user)
