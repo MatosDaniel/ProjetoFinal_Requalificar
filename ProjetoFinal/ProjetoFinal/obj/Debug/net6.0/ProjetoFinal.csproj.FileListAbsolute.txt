@@ -124,3 +124,15 @@ C:\Users\Net19\Desktop\ProjetoFinal_Requalificar\ProjetoFinal\ProjetoFinal\bin\D
 C:\Users\Net19\Desktop\ProjetoFinal_Requalificar\ProjetoFinal\ProjetoFinal\bin\Debug\net6.0\ZstdNet.dll
 C:\Users\Net19\Desktop\ProjetoFinal_Requalificar\ProjetoFinal\ProjetoFinal\bin\Debug\net6.0\MySql.EntityFrameworkCore.dll
 C:\Users\Net19\Desktop\ProjetoFinal_Requalificar\ProjetoFinal\ProjetoFinal\bin\Debug\net6.0\System.IdentityModel.Tokens.Jwt.dll
+C:\Users\Net18\Documents\GitHub\ProjetoFinal_Requalificar\ProjetoFinal\ProjetoFinal\obj\Debug\net6.0\ProjetoFinal.csproj.AssemblyReference.cache
+C:\Users\Net18\Documents\GitHub\ProjetoFinal_Requalificar\ProjetoFinal\ProjetoFinal\obj\Debug\net6.0\ProjetoFinal.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Net18\Documents\GitHub\ProjetoFinal_Requalificar\ProjetoFinal\ProjetoFinal\obj\Debug\net6.0\ProjetoFinal.AssemblyInfoInputs.cache
+C:\Users\Net18\Documents\GitHub\ProjetoFinal_Requalificar\ProjetoFinal\ProjetoFinal\obj\Debug\net6.0\ProjetoFinal.AssemblyInfo.cs
+C:\Users\Net18\Documents\GitHub\ProjetoFinal_Requalificar\ProjetoFinal\ProjetoFinal\obj\Debug\net6.0\ProjetoFinal.csproj.CoreCompileInputs.cache
+C:\Users\Net18\Documents\GitHub\ProjetoFinal_Requalificar\ProjetoFinal\ProjetoFinal\obj\Debug\net6.0\ProjetoFinal.MvcApplicationPartsAssemblyInfo.cs
+C:\Users\Net18\Documents\GitHub\ProjetoFinal_Requalificar\ProjetoFinal\ProjetoFinal\obj\Debug\net6.0\ProjetoFinal.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\Net18\Documents\GitHub\ProjetoFinal_Requalificar\ProjetoFinal\ProjetoFinal\obj\Debug\net6.0\ProjetoFinal.RazorAssemblyInfo.cache
+C:\Users\Net18\Documents\GitHub\ProjetoFinal_Requalificar\ProjetoFinal\ProjetoFinal\obj\Debug\net6.0\ProjetoFinal.RazorAssemblyInfo.cs
+C:\Users\Net18\Documents\GitHub\ProjetoFinal_Requalificar\ProjetoFinal\ProjetoFinal\obj\Debug\net6.0\ProjetoFinal.dll
+C:\Users\Net18\Documents\GitHub\ProjetoFinal_Requalificar\ProjetoFinal\ProjetoFinal\obj\Debug\net6.0\ref\ProjetoFinal.dll
+C:\Users\Net18\Documents\GitHub\ProjetoFinal_Requalificar\ProjetoFinal\ProjetoFinal\obj\Debug\net6.0\ProjetoFinal.pdb

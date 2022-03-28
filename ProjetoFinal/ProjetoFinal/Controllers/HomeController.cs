@@ -26,22 +26,17 @@ namespace ProjetoFinal.Controllers
             return View();
         }
 
-        public IActionResult Error()
-        {
-            return View();
-        }
-
         public IActionResult Privacy()
         {
             return View();
         }
-        /*
+
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
-        */
+
         public IActionResult Login()
         {
             return View();
@@ -161,14 +156,16 @@ namespace ProjetoFinal.Controllers
             return View();
         }
 
-        /*
+        
         [HttpPost]
         public async Task<IActionResult> CreatePublication(Publication publication)
         {
-            if (publication is not null)
+            if (ModelState.IsValid)
             {
                 publicationService.Create(publication);
+                return RedirectToAction("Index");
             }
-        } */
+            return View(publication);
+        } 
     }
 }

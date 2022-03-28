@@ -1,4 +1,4 @@
-﻿namespace Ficha14.Models
+﻿namespace ProjetoFinal
 {
     public class ErrorViewModel
     {
