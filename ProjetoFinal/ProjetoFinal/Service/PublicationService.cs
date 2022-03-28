@@ -34,12 +34,20 @@ namespace ProjetoFinal.Service
 
         public IEnumerable<Publication> GetAll()
         {
-            throw new NotImplementedException();
+            return context.Publications;
         }
 
-        public void Edit(int id, Publication publication)
+        public void EditPublication(Publication publication)
         {
-            throw new NotImplementedException();
+            if(publication != null)
+            {
+                context.Publications.Update(publication);
+                context.SaveChanges();
+            }
+            else
+            {
+                throw new NullReferenceException("Publication not found!");
+            }
         }
     }
 }

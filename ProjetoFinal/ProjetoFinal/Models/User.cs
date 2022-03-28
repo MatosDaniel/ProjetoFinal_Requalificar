@@ -2,7 +2,7 @@
 {
     public class User //Criação da classe User e dos seus atributos e propriedades
     {
-        public int Id { get; set; }
+        public int UserId { get; set; }
         public string Username { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }

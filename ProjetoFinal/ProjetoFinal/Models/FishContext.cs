@@ -23,7 +23,7 @@ namespace ProjetoFinal.Models
 
             modelBuilder.Entity<User>(entity =>
             {
-                entity.HasKey(e => e.Id);
+                entity.HasKey(e => e.UserId);
                 entity.Property(e => e.Username).IsRequired();
                 entity.Property(e => e.FirstName).IsRequired();
                 entity.Property(e => e.LastName).IsRequired();

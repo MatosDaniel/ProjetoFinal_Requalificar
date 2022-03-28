@@ -41,7 +41,7 @@ namespace ProjetoFinal.Service
 
         public User GetById(int id)
         {
-            var user = context.Users.FirstOrDefault(x => x.Id == id);
+            var user = context.Users.FirstOrDefault(x => x.UserId == id);
             return user;
         }
     }

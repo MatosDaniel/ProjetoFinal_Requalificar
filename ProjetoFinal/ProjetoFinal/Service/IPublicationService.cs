@@ -8,6 +8,6 @@ namespace ProjetoFinal.Service
         public abstract Publication GetById(int id);
         public abstract Publication Create(Publication publication);
         public abstract void Delete(Publication publication);
-        public abstract void Edit(int id, Publication publication);
+        public abstract void EditPublication(Publication publication);
     }
 }

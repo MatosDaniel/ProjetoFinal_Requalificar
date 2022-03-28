@@ -23,7 +23,8 @@ namespace ProjetoFinal.Controllers
 
         public IActionResult Index()
         {
-            return View();
+            IEnumerable<Publication> publicationList = publicationService.GetAll();
+            return View(publicationList);
         }
 
         public IActionResult Privacy()
@@ -166,6 +167,24 @@ namespace ProjetoFinal.Controllers
                 return RedirectToAction("Index");
             }
             return View(publication);
-        } 
+        }
+        public IActionResult EditPublication(int id)
+        {
+            if(id==null || id == 0)
+            {
+                return NotFound();
+            }
+            var pubFromDb = publicationService.GetById(id);
+            return View(pubFromDb);
+        }
+
+
+        [HttpPost]
+        public async Task<IActionResult> EditPublication(Publication publication)
+        {
+            
+                publicationService.EditPublication(publication);
+                return RedirectToAction(nameof(Index));
+        }
     }
 }
