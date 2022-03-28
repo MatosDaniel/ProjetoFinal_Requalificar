@@ -10,5 +10,7 @@
         public string Password { get; set; }
         public string Gender { get; set; }
         public int Mobile { get; set; }
+
+        public List<Publication> Publications { get; set; }
     }
 }

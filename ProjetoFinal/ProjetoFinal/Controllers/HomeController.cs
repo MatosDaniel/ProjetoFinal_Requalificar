@@ -68,13 +68,13 @@ namespace ProjetoFinal.Controllers
                 if (generatedToken != null)
                 {
                     HttpContext.Session.SetString("Token", generatedToken);
-                    return RedirectToAction("Index", validUser);
+                    return RedirectToAction("Profile", user); //validUser
                 }
                 else
                 {
                     return (RedirectToAction("Error"));
                 }
-        }
+            }
             else
             {
                 return (RedirectToAction("Error"));
@@ -109,9 +109,9 @@ namespace ProjetoFinal.Controllers
         }
 
         [HttpGet]
-        public IActionResult Profile(int id)
+        public IActionResult Profile(User user_)
         {
-            var user = userService.GetById(id);
+            var user = userService.GetById(user_.UserId);
             if (user == null)
             {
                 return NotFound();

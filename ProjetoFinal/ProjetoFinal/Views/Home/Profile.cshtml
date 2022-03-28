@@ -1,4 +1,4 @@
-﻿@model ProjetoFinal.Models.UserViewModel
+﻿@model ProjetoFinal.Models.User
 @{
     ViewData["Title"] = "User Details";
 }
@@ -10,7 +10,7 @@
 
 <h2>Your Profile Details</h2>
 <address>    
-    <br> Username: @ViewData["Username"] </br>
+    <br> Username: @Model.Username </br>
     <br> Email: @Model.Email </br>
     <br> Password: @Model.Password </br>
     <br> First Name: @Model.FirstName </br>
@@ -18,4 +18,30 @@
     <br> Gender: @Model.Gender </br>
     <br> Mobile: @Model.Mobile </br>
 </address>
+
+@foreach(var pub in Model.Publications)
+    {
+        if(pub.User.UserId == @Model.UserId)
+        {
+            <tr>
+                <td>
+                    @pub.Text
+                </td>
+                <td>
+                </td>
+                <td>
+                    @pub.Time
+                </td>
+                <td>
+                    <a asp-action="EditPublication" asp-route-id="@pub.IdPub">Edit</a> |
+@*                    <a asp-action="Details" asp-route-isbn="@item.ISBN">Details</a> |
+                    <a asp-action="Delete" asp-route-isbn="@item.ISBN">Delete</a>*@
+                </td>
+            </tr>
+        }
+    }
+
+
 </div>
+
+
