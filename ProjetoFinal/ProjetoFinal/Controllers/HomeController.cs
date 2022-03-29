@@ -184,10 +184,10 @@ namespace ProjetoFinal.Controllers
 
 
         [HttpPost]
-        public async Task<IActionResult> EditPublication(Publication publication)
+        public async Task<IActionResult> EditPublication(int id, Publication publication)
         {
-            publicationService.EditPublication(publication);
-            return RedirectToAction(nameof(Home));
+            publicationService.EditPublication(id, publication);
+            return RedirectToAction(nameof(Profile));
         }
 
         [HttpPost]
@@ -217,9 +217,9 @@ namespace ProjetoFinal.Controllers
             }
         }
 
-        public IActionResult DeletePost(Publication publication)
+        public IActionResult DeletePost(int id)
         {
-            publicationService.Delete(publication.IdPub);
+            publicationService.Delete(id);
             return RedirectToAction(nameof(Profile));
         }
     }

@@ -57,11 +57,12 @@ namespace ProjetoFinal.Service
             return context.Publications;
         }
 
-        public void EditPublication(Publication publication)
+        public void EditPublication(int id, Publication publication)
         {
-            if(publication != null)
+            var post = GetById(id);
+            if(post != null)
             {
-                context.Publications.Update(publication);
+                post.Text = publication.Text;
                 context.SaveChanges();
             }
             else

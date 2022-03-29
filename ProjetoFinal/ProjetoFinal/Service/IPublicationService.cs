@@ -12,6 +12,6 @@ namespace ProjetoFinal.Service
 
         public abstract Publication Create(Publication publication);
         public abstract void Delete(int idPub);
-        public abstract void EditPublication(Publication publication);
+        public abstract void EditPublication(int id, Publication publication);
     }
 }
