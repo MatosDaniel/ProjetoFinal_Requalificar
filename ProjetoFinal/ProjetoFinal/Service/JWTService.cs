@@ -57,5 +57,20 @@ namespace ProjetoFinal.Service
             }
             return true;
         }
+
+        public string GetJWTTokenClaim(string token)
+        {
+            try
+            {
+                var tokenHandler = new JwtSecurityTokenHandler();
+                var securityToken = (JwtSecurityToken)tokenHandler.ReadToken(token);
+                var claimValue = securityToken.Claims.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier)?.Value;
+                return claimValue;
+            }
+            catch (Exception)
+            {
+                return null;
+            }
+        }
     }
 }

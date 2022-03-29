@@ -21,8 +21,9 @@ namespace ProjetoFinal.Controllers
             this.publicationService = publicationService;
         }
 
-        public IActionResult Index()
+        public IActionResult Home(UserViewModel user)
         {
+            ViewBag.UserId = user.UserId;
             IEnumerable<Publication> publicationList = publicationService.GetAll();
             return View(publicationList);
         }
@@ -38,13 +39,13 @@ namespace ProjetoFinal.Controllers
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
 
-        public IActionResult Login()
+        public IActionResult Index()
         {
             return View();
         }
 
         [AllowAnonymous]
-        [Route("/Home/Login")]
+        [Route("/Home/Index")]
         [HttpPost]
         public IActionResult Login(User userLogin)
         {
@@ -54,7 +55,7 @@ namespace ProjetoFinal.Controllers
             }
 
             var user = userService.Get(userLogin.Email, userLogin.Password);
-            var validUser = new UserViewModel { Username = user.Username, Password = user.Password, FirstName = user.FirstName, LastName = user.LastName, Mobile = user.Mobile, Gender = user.Gender, Email = user.Email };
+            var validUser = new UserViewModel { Username = user.Username, UserId = user.UserId, FirstName = user.FirstName, LastName = user.LastName, Mobile = user.Mobile, Gender = user.Gender, Email = user.Email };
 
             if (validUser != null)
             {
@@ -68,7 +69,7 @@ namespace ProjetoFinal.Controllers
                 if (generatedToken != null)
                 {
                     HttpContext.Session.SetString("Token", generatedToken);
-                    return RedirectToAction("Profile", user); //validUser
+                    return RedirectToAction("Home", validUser); //validUser
                 }
                 else
                 {
@@ -116,40 +117,28 @@ namespace ProjetoFinal.Controllers
             if (ModelState.IsValid)
             {
                 userService.Create(user);
-                return RedirectToAction("Index");
+                return RedirectToAction("Home");
             }
             return View(user);
         }
 
         [HttpGet]
-        public IActionResult Profile(User user_)
+        public IActionResult Profile()
         {
-            var user = userService.GetById(user_.UserId);
-            if (user == null)
-            {
-                return NotFound();
-            }
-            else
-            {
                 string token = HttpContext.Session.GetString("Token");
 
                 if (token == null)
                 {
                     return (RedirectToAction("Index"));
                 }
-
-                if (!tokenService.IsTokenValid(
-                    config["Jwt:Key"].ToString(),
-                    config["Jwt:Issuer"].ToString(),
-                    config["Jwt:Audience"].ToString(),
-                    token))
+                else
                 {
-                    return (RedirectToAction("Index"));
+                    var id = tokenService.GetJWTTokenClaim(token);
+                    var user = userService.GetById(Convert.ToInt32(id));
+                    var userViewModel = new UserViewModel { Email = user.Email, UserId = user.UserId, Username = user.Username, FirstName = user.FirstName, LastName = user.LastName, Gender = user.Gender, Mobile = user.Mobile };
+                    
+                    return View("Profile", userViewModel);
                 }
-
-                ViewBag.Token = token;
-                return View(user);
-            }
         }
 
         public IActionResult LogOut()
@@ -177,7 +166,7 @@ namespace ProjetoFinal.Controllers
             if (ModelState.IsValid)
             {
                 publicationService.Create(publication);
-                return RedirectToAction("Index");
+                return RedirectToAction("Home");
             }
             return View(publication);
         }
@@ -197,7 +186,7 @@ namespace ProjetoFinal.Controllers
         {
             
                 publicationService.EditPublication(publication);
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction(nameof(Home));
         }
 
         [HttpPost]
@@ -207,6 +196,11 @@ namespace ProjetoFinal.Controllers
             return RedirectToAction(nameof(Index));
         }
 
+        public IActionResult UpdateUser(int id)
+        {
+            var user = userService.GetById(id);
+            return View(user);
+        }
 
         public IActionResult Update(User user)
         {
@@ -214,7 +208,7 @@ namespace ProjetoFinal.Controllers
             if (user is not null && userToUpdate is not null)
             {
                 userService.Edit(user.UserId, user);
-                return Ok(Profile(user));
+                return RedirectToAction(nameof(Profile));
             }
             else
             {

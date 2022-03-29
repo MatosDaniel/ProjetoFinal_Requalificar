@@ -6,5 +6,6 @@ namespace ProjetoFinal.Service
     {
         string GenerateToken(string key, string issuer, string audience, User user);
         bool IsTokenValid(string key, string issuer, string audience, string token);
+        public string GetJWTTokenClaim(string token);
     }
 }
