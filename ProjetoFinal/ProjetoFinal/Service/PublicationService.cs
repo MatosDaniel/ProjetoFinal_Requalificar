@@ -37,9 +37,19 @@ namespace ProjetoFinal.Service
 
         }
 
-        public void Delete(Publication publication)
+        public void Delete(int idPub)
         {
-            throw new NotImplementedException();
+            var pub = GetById(idPub);
+            if (pub is not null)
+            {
+                context.Publications.Remove(pub);
+                context.SaveChanges();
+
+            }
+            else
+            {
+                throw new NullReferenceException("Publication not found");
+            }
         }
 
         public IEnumerable<Publication> GetAll()

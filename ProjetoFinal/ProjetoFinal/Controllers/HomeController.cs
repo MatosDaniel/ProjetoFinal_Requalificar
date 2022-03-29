@@ -177,6 +177,8 @@ namespace ProjetoFinal.Controllers
                 return NotFound();
             }
             var pubFromDb = publicationService.GetById(id);
+            ViewBag.User = pubFromDb.User;
+      
             return View(pubFromDb);
         }
 
@@ -184,9 +186,8 @@ namespace ProjetoFinal.Controllers
         [HttpPost]
         public async Task<IActionResult> EditPublication(Publication publication)
         {
-            
-                publicationService.EditPublication(publication);
-                return RedirectToAction(nameof(Home));
+            publicationService.EditPublication(publication);
+            return RedirectToAction(nameof(Home));
         }
 
         [HttpPost]
@@ -216,5 +217,10 @@ namespace ProjetoFinal.Controllers
             }
         }
 
+        public IActionResult DeletePost(Publication publication)
+        {
+            publicationService.Delete(publication.IdPub);
+            return RedirectToAction(nameof(Profile));
+        }
     }
 }

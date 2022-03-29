@@ -11,7 +11,7 @@ namespace ProjetoFinal.Service
         public IEnumerable<Publication> GetPostById(int id);
 
         public abstract Publication Create(Publication publication);
-        public abstract void Delete(Publication publication);
+        public abstract void Delete(int idPub);
         public abstract void EditPublication(Publication publication);
     }
 }
