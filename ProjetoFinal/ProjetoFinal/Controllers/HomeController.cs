@@ -87,29 +87,6 @@ namespace ProjetoFinal.Controllers
             return View();
         }
 
-        //[AllowAnonymous]
-        //[HttpPost]
-        //public async Task<IActionResult> SignUp(User user)
-        //{
-        //    if (ModelState.IsValid)
-        //    {
-        //        var userExists = userService.FindByEmail(user.Email);
-        //        if (userExists != null)
-        //            return StatusCode(StatusCodes.Status500InternalServerError, "User already exists!");
-
-
-        //        var newUser = userService.Create(user);
-        //        if (newUser is not null)
-        //            return RedirectToAction(nameof(Index));
-        //        else
-        //            return RedirectToAction(nameof(Error));
-        //    }
-        //    else
-        //    {
-        //        return RedirectToAction(nameof(Error));
-        //    }
-        //}
-
         [AllowAnonymous]
         [HttpPost]
         public IActionResult SignUp(User user)
@@ -156,20 +133,41 @@ namespace ProjetoFinal.Controllers
 
         public IActionResult CreatePublication()
         {
-            return View();
+            string token = HttpContext.Session.GetString("Token");
+
+            if (token == null)
+            {
+                return (RedirectToAction("Index"));
+            }
+            else
+            {
+                var id = tokenService.GetJWTTokenClaim(token);
+                var user = userService.GetById(Convert.ToInt32(id));
+                var userViewModel = new UserViewModel { Email = user.Email, UserId = user.UserId, Username = user.Username, FirstName = user.FirstName, LastName = user.LastName, Gender = user.Gender, Mobile = user.Mobile };
+
+                ViewBag.UserId = userViewModel.UserId;
+
+                return View();
+            }
         }
 
         
         [HttpPost]
-        public async Task<IActionResult> CreatePublication(Publication publication)
+        public async Task<IActionResult> CreatePost(PostViewModel publication)
         {
             if (ModelState.IsValid)
             {
-                publicationService.Create(publication);
+                User user = userService.GetById(publication.UserId);
+                Publication post = new Publication { Text = publication.Text, IdPub = publication.IdPub, Img = publication.Img, Time = publication.Time, User = user };
+                publicationService.Create(post);
                 return RedirectToAction("Home");
             }
-            return View(publication);
+            else
+            {
+                return View(publication);
+            }
         }
+
         public IActionResult EditPublication(int id)
         {
             if(id==null || id == 0)

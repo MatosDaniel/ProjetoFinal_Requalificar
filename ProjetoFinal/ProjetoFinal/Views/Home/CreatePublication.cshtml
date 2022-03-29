@@ -1,8 +1,7 @@
-﻿@model ProjetoFinal.Models.Publication
-
+﻿@model ProjetoFinal.Models.PostViewModel
 <div class="row">
     <div class="col-md-4">
-        <form asp-action="CreatePublication">
+        <form asp-action="CreatePost">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
                 <label asp-for="Text" class="control-label"></label>
@@ -14,6 +13,8 @@
                 <input asp-for="Img" type="file" name="file" />
                 <span asp-validation-for="Img" class="text-danger"></span>
             </div>*@ 
+            <input hidden asp-for=UserId value="@ViewData["UserId"]"/>
+           @* @Model.UserId = @ViewData["UserId"]*@
             <div class="form-group">
                 <input type="submit" value="Post" class="btn btn-primary" />
             </div>

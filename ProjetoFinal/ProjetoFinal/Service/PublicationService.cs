@@ -13,7 +13,7 @@ namespace ProjetoFinal.Service
         }   
 
         public Publication Create(Publication publication)
-        {
+        {            
             context.Publications.Add(publication);
             context.SaveChanges();
             return publication;
