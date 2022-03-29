@@ -112,9 +112,11 @@ namespace ProjetoFinal.Controllers
                 {
                     var id = tokenService.GetJWTTokenClaim(token);
                     var user = userService.GetById(Convert.ToInt32(id));
-                    var userViewModel = new UserViewModel { Email = user.Email, UserId = user.UserId, Username = user.Username, FirstName = user.FirstName, LastName = user.LastName, Gender = user.Gender, Mobile = user.Mobile };
+
+                    var postsByUser = publicationService.GetPostById(user.UserId);
+                    var profileViewModel = new ProfileViewModel { Email = user.Email, UserId = user.UserId, Username = user.Username, FirstName = user.FirstName, LastName = user.LastName, Gender = user.Gender, Mobile = user.Mobile, Publications = postsByUser };
                     
-                    return View("Profile", userViewModel);
+                    return View("Profile", profileViewModel);
                 }
         }
 

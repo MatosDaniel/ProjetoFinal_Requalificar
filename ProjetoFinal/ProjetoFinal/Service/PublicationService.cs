@@ -27,6 +27,16 @@ namespace ProjetoFinal.Service
 
         }
 
+        public IEnumerable<Publication> GetPostById(int id)
+        {
+            //var pub = context.Publications.Find(u => u.User.UserId == id);
+
+            var pub = context.Publications.Include(c => c.User);
+            var userpub = pub.Where(c => c.User.UserId == id);
+            return userpub;
+
+        }
+
         public void Delete(Publication publication)
         {
             throw new NotImplementedException();
@@ -48,6 +58,34 @@ namespace ProjetoFinal.Service
             {
                 throw new NullReferenceException("Publication not found!");
             }
+        }
+
+        public IEnumerable<Publication> GetByUser(int id)
+        {
+            var allPosts = GetAll();
+
+            List<Publication> postsByUser = new List<Publication>();
+
+            foreach(var posts in allPosts)
+            {
+                //var teste = posts;
+
+                if (posts.User.UserId == id)
+                {
+                    postsByUser.Add(posts);
+                }
+                else
+                {
+                    throw new NullReferenceException();
+                }
+            }
+            if(postsByUser.Count == 0)
+            {
+                Publication newpost = new Publication();
+                newpost.Text = "You haven't post anything";
+                postsByUser.Add(newpost);
+            }
+            return postsByUser;
         }
     }
 }
