@@ -23,5 +23,6 @@ namespace ProjetoFinal.Models
 
         [RegularExpression(@"^([0-9]{9})$", ErrorMessage = "Invalid Phone Number.")]
         public int Mobile { get; set; }
+        public string ProfileImage { get; set; } = Path.GetFileName("/images/default.jpg");
     }
 }

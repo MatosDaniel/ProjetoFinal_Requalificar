@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "Rmb+UAMXEW5yGOhp38XI6bUd09Hx/bP63kAuPNsQskk=",
+  "Hash": "UY83xIYhliqV1AY22qUzEwN37Uyqszt/qAd3oMniIg8=",
   "Source": "ProjetoFinal",
   "BasePath": "_content/ProjetoFinal",
   "Mode": "Default",
@@ -83,6 +83,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\favicon.ico"
+    },
+    {
+      "Identity": "C:\\Users\\sofii\\Documents\\GitHub\\ProjetoFinal_Requalificar\\ProjetoFinal\\ProjetoFinal\\wwwroot\\images\\default.jpg",
+      "SourceId": "ProjetoFinal",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\sofii\\Documents\\GitHub\\ProjetoFinal_Requalificar\\ProjetoFinal\\ProjetoFinal\\wwwroot\\",
+      "BasePath": "_content/ProjetoFinal",
+      "RelativePath": "images/default.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\default.jpg"
     },
     {
       "Identity": "C:\\Users\\sofii\\Documents\\GitHub\\ProjetoFinal_Requalificar\\ProjetoFinal\\ProjetoFinal\\wwwroot\\js\\site.js",

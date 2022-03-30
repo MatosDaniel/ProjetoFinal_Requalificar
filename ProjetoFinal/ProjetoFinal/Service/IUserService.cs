@@ -10,5 +10,6 @@ namespace ProjetoFinal.Service
         public abstract void Delete(int id);
         public abstract User Edit(int id, User user);
         public abstract User FindByEmail(string email);
+        public abstract User UpdateImage(string profileImage);
     }
 }

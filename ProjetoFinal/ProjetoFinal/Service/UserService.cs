@@ -72,5 +72,10 @@ namespace ProjetoFinal.Service
             var user = context.Users.FirstOrDefault(x => x.UserId == id);
             return user;
         }
+        
+        public User UpdateImage(string profileImage)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

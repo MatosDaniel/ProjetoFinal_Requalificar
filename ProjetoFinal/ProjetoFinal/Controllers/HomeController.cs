@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using ProjetoFinal.Models;
 using ProjetoFinal.Service;
@@ -12,13 +13,15 @@ namespace ProjetoFinal.Controllers
         private readonly IJWTService tokenService;
         private readonly IUserService userService;
         private readonly IPublicationService publicationService;
+        private readonly IWebHostEnvironment hostEnvironment;
 
-        public HomeController(IConfiguration config, IJWTService tokenService, IUserService userService, IPublicationService publicationService)
+        public HomeController(IConfiguration config, IJWTService tokenService, IUserService userService, IPublicationService publicationService, IWebHostEnvironment hostEnvironment)
         {
             this.config = config;
             this.tokenService = tokenService;
             this.userService = userService;
             this.publicationService = publicationService;
+            this.hostEnvironment = hostEnvironment;
         }
 
         public IActionResult Home(UserViewModel user)
@@ -221,6 +224,32 @@ namespace ProjetoFinal.Controllers
         {
             publicationService.Delete(id);
             return RedirectToAction(nameof(Profile));
+        }
+
+        // Upload Image
+        [HttpPost("FileUpload")]
+        public IActionResult UploadImage(IFormFile file)
+        {
+            string path = Path.Combine(this.hostEnvironment.WebRootPath, "images");
+            if (!Directory.Exists(path))
+            {
+                Directory.CreateDirectory(path);
+            }
+
+            string fileName = Path.GetFileName(file.FileName);
+            using (FileStream stream = new FileStream(Path.Combine(path, fileName), FileMode.Create))
+            {
+                file.CopyTo(stream);
+                return RedirectToAction("Profile", new ProfileViewModel { ProfileImage = file.FileName });
+            }
+
+            return RedirectToAction("Error");
+        }
+        public IActionResult ImageUpload(IFormFile file, ProfileViewModel image)
+        {
+            string fileName = Path.GetFileName(file.FileName);
+            image.ProfileImage = fileName;
+            return View(image);
         }
     }
 }

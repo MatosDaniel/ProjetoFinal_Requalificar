@@ -10,7 +10,7 @@
         public int UserId { get; set; }
         public string Gender { get; set; }
         public int Mobile { get; set; }
-
+        public string ProfileImage { get; set; } = Path.GetFileName("/images/default.jpg");
         public IEnumerable<Publication> Publications { get; set; }
     }
 }
