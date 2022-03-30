@@ -1,0 +1,12 @@
+﻿@model ProjetoFinal.Models.Publication
+
+<div class="row" method="post">
+    <div class="col-md-4">
+        <form asp-action="DeletePost" asp-route-id="@Model.IdPub">
+                <p>You are about to delete this Tweet: </p> <br />
+                <p>Are you really sure?</p>
+                <button class="btn btn-danger" type="submit">Confirm</button>
+                @*<a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Profile">Cancel</a>*@
+        </form>
+    </div>
+</div>

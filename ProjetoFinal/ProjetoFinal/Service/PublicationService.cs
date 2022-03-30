@@ -29,17 +29,14 @@ namespace ProjetoFinal.Service
 
         public IEnumerable<Publication> GetPostById(int id)
         {
-            //var pub = context.Publications.Find(u => u.User.UserId == id);
-
             var pub = context.Publications.Include(c => c.User);
             var userpub = pub.Where(c => c.User.UserId == id);
             return userpub;
-
         }
 
-        public void Delete(int idPub)
+        public void Delete(int id)
         {
-            var pub = GetById(idPub);
+            var pub = GetById(id);
             if (pub is not null)
             {
                 context.Publications.Remove(pub);

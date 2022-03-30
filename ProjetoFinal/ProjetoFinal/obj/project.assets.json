@@ -1981,19 +1981,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\sofii\\.nuget\\packages\\": {}
+    "C:\\Users\\Net19\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\sofii\\Documents\\GitHub\\ProjetoFinal_Requalificar\\ProjetoFinal\\ProjetoFinal\\ProjetoFinal.csproj",
+      "projectUniqueName": "C:\\Users\\Net19\\Desktop\\ProjetoFinal_Requalificar\\ProjetoFinal\\ProjetoFinal\\ProjetoFinal.csproj",
       "projectName": "ProjetoFinal",
-      "projectPath": "C:\\Users\\sofii\\Documents\\GitHub\\ProjetoFinal_Requalificar\\ProjetoFinal\\ProjetoFinal\\ProjetoFinal.csproj",
-      "packagesPath": "C:\\Users\\sofii\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\sofii\\Documents\\GitHub\\ProjetoFinal_Requalificar\\ProjetoFinal\\ProjetoFinal\\obj\\",
+      "projectPath": "C:\\Users\\Net19\\Desktop\\ProjetoFinal_Requalificar\\ProjetoFinal\\ProjetoFinal\\ProjetoFinal.csproj",
+      "packagesPath": "C:\\Users\\Net19\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Net19\\Desktop\\ProjetoFinal_Requalificar\\ProjetoFinal\\ProjetoFinal\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\sofii\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Net19\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [

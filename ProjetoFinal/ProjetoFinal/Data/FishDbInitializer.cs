@@ -21,7 +21,8 @@ namespace ProjetoFinal.Data
             context.Publications.Add(new Publication
             {
                 Text = "Este é a primeira publicação no Fish",
-                User = user
+                User = user,
+                Username = "Pedrinho",
             });
             context.SaveChanges();
         }

@@ -18,9 +18,13 @@ namespace ProjetoFinal.Service
             return user;
         }
 
-        public void Delete(int id)
+        public User GetByUsername(User user)
         {
-            var user = context.Users.Find(id);
+            return context.Users.FirstOrDefault(u => u.Username == user.Username);
+        }
+
+        public void Delete(User user)
+        {
             if (user is not null)
             {
                 context.Users.Remove(user);
@@ -73,9 +77,11 @@ namespace ProjetoFinal.Service
             return user;
         }
         
-        public User UpdateImage(string profileImage)
+        public void UpdateImage(int id, string profileImage)
         {
-            throw new NotImplementedException();
+            var imageUpdate = context.Users.Find(id);
+            imageUpdate.ProfileImage = profileImage;
+            context.SaveChanges();
         }
     }
 }

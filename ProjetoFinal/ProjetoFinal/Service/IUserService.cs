@@ -7,9 +7,10 @@ namespace ProjetoFinal.Service
         public abstract User GetById(int id);
         public abstract User Get(string email, string password);
         public abstract User Create(User user);
-        public abstract void Delete(int id);
+        public abstract void Delete(User user);
         public abstract User Edit(int id, User user);
+        public abstract User GetByUsername(User user);
         public abstract User FindByEmail(string email);
-        public abstract User UpdateImage(string profileImage);
+        public abstract void UpdateImage(int id, string profileImage);
     }
 }

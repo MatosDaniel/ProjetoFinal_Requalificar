@@ -58,7 +58,7 @@ namespace ProjetoFinal.Controllers
             }
 
             var user = userService.Get(userLogin.Email, userLogin.Password);
-            var validUser = new UserViewModel { Username = user.Username, UserId = user.UserId, FirstName = user.FirstName, LastName = user.LastName, Mobile = user.Mobile, Gender = user.Gender, Email = user.Email };
+            var validUser = new UserViewModel { Username = user.Username, UserId = user.UserId, FirstName = user.FirstName, LastName = user.LastName, Mobile = user.Mobile, Gender = user.Gender, Email = user.Email, ProfileImage = user.ProfileImage };
 
             if (validUser != null)
             {
@@ -94,12 +94,22 @@ namespace ProjetoFinal.Controllers
         [HttpPost]
         public IActionResult SignUp(User user)
         {
-            if (ModelState.IsValid)
+            var username = userService.GetByUsername(user);
+            var email = userService.FindByEmail(user.Email);
+
+            if (username == null && email == null)
             {
-                userService.Create(user);
-                return RedirectToAction("Home");
+                if (ModelState.IsValid)
+                {
+                    userService.Create(user);
+                    return RedirectToAction("Home");
+                }
+                return View(user);
             }
-            return View(user);
+            else
+            {
+                return RedirectToAction("Error");
+            }
         }
 
         [HttpGet]
@@ -127,7 +137,6 @@ namespace ProjetoFinal.Controllers
         {
             return View();
         }
-
         [AllowAnonymous]
         [HttpPost]
         public IActionResult LogoutUser()
@@ -144,6 +153,7 @@ namespace ProjetoFinal.Controllers
             {
                 return (RedirectToAction("Index"));
             }
+
             else
             {
                 var id = tokenService.GetJWTTokenClaim(token);
@@ -163,7 +173,7 @@ namespace ProjetoFinal.Controllers
             if (ModelState.IsValid)
             {
                 User user = userService.GetById(publication.UserId);
-                Publication post = new Publication { Text = publication.Text, IdPub = publication.IdPub, Img = publication.Img, Time = publication.Time, User = user };
+                Publication post = new Publication { Text = publication.Text, IdPub = publication.IdPub, Img = publication.Img, Time = publication.Time, User = user, Username = user.Username };
                 publicationService.Create(post);
                 return RedirectToAction("Home");
             }
@@ -193,10 +203,44 @@ namespace ProjetoFinal.Controllers
             return RedirectToAction(nameof(Profile));
         }
 
+        public IActionResult ConfirmDeletePost(int id)
+        {
+            var publication = publicationService.GetById(id);
+            return View(publication);
+        }
+
+
+        [HttpPost]
+        public async Task<IActionResult> DeletePost(int id)
+        {
+            publicationService.Delete(id);
+            return RedirectToAction(nameof(Profile));
+        }
+
+        public IActionResult DeleteUser()
+        {
+            string token = HttpContext.Session.GetString("Token");
+
+            if (token == null)
+            {
+                return (RedirectToAction("Index"));
+            }
+
+            else
+            {
+                var id = tokenService.GetJWTTokenClaim(token);
+                var user = userService.GetById(Convert.ToInt32(id));
+                var userViewModel = new UserViewModel { Email = user.Email, UserId = user.UserId, Username = user.Username, FirstName = user.FirstName, LastName = user.LastName, Gender = user.Gender, Mobile = user.Mobile, ProfileImage = user.ProfileImage };
+
+                return View(userViewModel);
+            }
+        }
+
         [HttpPost]
         public async Task<IActionResult> Delete(int id)
         {
-            userService.Delete(id);
+            User userToDelete = userService.GetById(id);
+            userService.Delete(userToDelete);
             return RedirectToAction(nameof(Index));
         }
 
@@ -220,36 +264,38 @@ namespace ProjetoFinal.Controllers
             }
         }
 
-        public IActionResult DeletePost(int id)
-        {
-            publicationService.Delete(id);
-            return RedirectToAction(nameof(Profile));
-        }
-
         // Upload Image
         [HttpPost("FileUpload")]
         public IActionResult UploadImage(IFormFile file)
         {
-            string path = Path.Combine(this.hostEnvironment.WebRootPath, "images");
-            if (!Directory.Exists(path))
-            {
-                Directory.CreateDirectory(path);
-            }
+            string token = HttpContext.Session.GetString("Token");
 
-            string fileName = Path.GetFileName(file.FileName);
-            using (FileStream stream = new FileStream(Path.Combine(path, fileName), FileMode.Create))
+            if (token == null)
             {
-                file.CopyTo(stream);
-                return RedirectToAction("Profile", new ProfileViewModel { ProfileImage = file.FileName });
+                return (RedirectToAction("Index"));
             }
+            else
+            {
+                var id = tokenService.GetJWTTokenClaim(token);
+                var user = userService.GetById(Convert.ToInt32(id));
+                var userViewModel = new UserViewModel { Email = user.Email, UserId = user.UserId, Username = user.Username, FirstName = user.FirstName, LastName = user.LastName, Gender = user.Gender, Mobile = user.Mobile, ProfileImage = user.ProfileImage };
 
-            return RedirectToAction("Error");
-        }
-        public IActionResult ImageUpload(IFormFile file, ProfileViewModel image)
-        {
-            string fileName = Path.GetFileName(file.FileName);
-            image.ProfileImage = fileName;
-            return View(image);
+                string path = Path.Combine(this.hostEnvironment.WebRootPath, "images");
+                if (!Directory.Exists(path))
+                {
+                    Directory.CreateDirectory(path);
+                }
+
+                string fileName = Path.GetFileName(file.FileName);
+                using (FileStream stream = new FileStream(Path.Combine(path, fileName), FileMode.Create))
+                {
+                    file.CopyTo(stream);
+                    userService.UpdateImage(userViewModel.UserId, fileName);
+                    return RedirectToAction("Profile", new ProfileViewModel { ProfileImage = file.FileName });
+                }
+
+                return RedirectToAction("Error");
+            }
         }
     }
 }

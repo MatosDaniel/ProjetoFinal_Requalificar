@@ -13,7 +13,7 @@
     <img src="/images/@Model.ProfileImage" title="Image" width=250 height=250/>
 </div>
     <form method="post" enctype="multipart/form-data"
-              asp-controller="Home" asp-action="ImageUpload">
+              asp-controller="Home" asp-action="UploadImage">
             <div class="form-group">
                 <div class="col-md-10">
                     <p>Update your profile picture:</p>
@@ -27,7 +27,7 @@
             </div>
 
     </form>
-    <form asp-action="Delete" asp-route-id="@Model.UserId">
+    <form asp-action="DeleteUser" asp-route-id="@Model">
         <address>    
             <br> Username: @Model.Username </br>
             <br> Email: @Model.Email </br>
@@ -36,7 +36,7 @@
             <br> Gender: @Model.Gender </br>
             <br> Mobile: @Model.Mobile </br>
         </address>
-        <button class="btn btn-danger" type="submit">Delete</button>
+        <button class="btn btn-danger" type="submit">Delete User</button>
         <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="UpdateUser" asp-route-id="@Model.UserId">Edit</a>
     </form>
     
@@ -54,7 +54,7 @@
    </td>
    <td>
    <a asp-action="EditPublication" asp-route-id="@pub.IdPub">Edit</a> |
-   <a asp-action="DeletePost" asp-route-id="@pub.IdPub">Delete</a>
+   <a asp-action="ConfirmDeletePost" asp-route-id="@pub.IdPub">Delete</a>
    </td>
    </tr>
         

@@ -5,8 +5,9 @@
         public int IdPub { get; set; }
         public string Text { get; set; }
         public string? Img { get; set; }
-        public virtual User User { get; set; }  //Propriedade que relaciona a classe User com a classe Publication
+        public User User { get; set; }  //Propriedade que relaciona a classe User com a classe Publication
         public DateTime Time { get; set; } = DateTime.Now; 
+        public string Username { get; set; }
 
         //public int Likes { get; set; }
     }
