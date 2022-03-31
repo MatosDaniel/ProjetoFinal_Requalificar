@@ -14,7 +14,8 @@ namespace ProjetoFinal.Data
                 Email = "pedrosantos@gmail.com",
                 Password = "batatasfritas",
                 Gender = "Male",
-                Mobile = 937772380
+                Mobile = 937772380,
+                ProfileImage = "default.png"
             };
             context.Users.Add(user);
 

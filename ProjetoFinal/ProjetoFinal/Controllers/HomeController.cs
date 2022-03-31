@@ -24,6 +24,7 @@ namespace ProjetoFinal.Controllers
             this.hostEnvironment = hostEnvironment;
         }
 
+        [Authorize]
         public IActionResult Home(UserViewModel user)
         {
             ViewBag.UserId = user.UserId;
@@ -31,17 +32,20 @@ namespace ProjetoFinal.Controllers
             return View(publicationList);
         }
 
+        [Authorize]
         public IActionResult Privacy()
         {
             return View();
         }
 
+
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult Error()
+        public IActionResult Error(string messageError)
         {
-            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier, MessageError = messageError });
         }
 
+        [AllowAnonymous]
         public IActionResult Index()
         {
             return View();
@@ -54,11 +58,19 @@ namespace ProjetoFinal.Controllers
         {
             if (string.IsNullOrEmpty(userLogin.Email) || string.IsNullOrEmpty(userLogin.Password))
             {
-                return (RedirectToAction("Error"));
+                var error = new ErrorViewModel { MessageError = "Both fields need to be filled. Try again." };
+                return (RedirectToAction("Error", error));
             }
 
             var user = userService.Get(userLogin.Email, userLogin.Password);
-            var validUser = new UserViewModel { Username = user.Username, UserId = user.UserId, FirstName = user.FirstName, LastName = user.LastName, Mobile = user.Mobile, Gender = user.Gender, Email = user.Email, ProfileImage = user.ProfileImage };
+
+            if(user is null)
+            {
+                var error = new ErrorViewModel { MessageError = "The password or email is inconrrect. Try again." };
+                return (RedirectToAction("Error", error));
+            }
+
+            var validUser = new UserViewModel { Username = user.Username, UserId = user.UserId, FirstName = user.FirstName, LastName = user.LastName, Mobile = user.Mobile, Gender = user.Gender, Email = user.Email };
 
             if (validUser != null)
             {
@@ -83,8 +95,9 @@ namespace ProjetoFinal.Controllers
             {
                 return (RedirectToAction("Error"));
             }
-}
+        }
 
+        [AllowAnonymous]
         public IActionResult SignUp()
         {
             return View();
@@ -102,16 +115,18 @@ namespace ProjetoFinal.Controllers
                 if (ModelState.IsValid)
                 {
                     userService.Create(user);
-                    return RedirectToAction("Home");
+                    return RedirectToAction("Index");
                 }
                 return View(user);
             }
             else
             {
-                return RedirectToAction("Error");
+                var error = new ErrorViewModel { MessageError = "This email or username already exist. Try again." };
+                return RedirectToAction("Error",error);
             }
         }
 
+        [Authorize]
         [HttpGet]
         public IActionResult Profile()
         {
@@ -127,16 +142,19 @@ namespace ProjetoFinal.Controllers
                     var user = userService.GetById(Convert.ToInt32(id));
 
                     var postsByUser = publicationService.GetPostById(user.UserId);
-                    var profileViewModel = new ProfileViewModel { Email = user.Email, UserId = user.UserId, Username = user.Username, FirstName = user.FirstName, LastName = user.LastName, Gender = user.Gender, Mobile = user.Mobile, Publications = postsByUser };
+                    var profileViewModel = new ProfileViewModel { Email = user.Email, UserId = user.UserId, Username = user.Username, FirstName = user.FirstName, 
+                        LastName = user.LastName, Gender = user.Gender, Mobile = user.Mobile, Publications = postsByUser, ProfileImage = user.ProfileImage };
                     
                     return View("Profile", profileViewModel);
                 }
         }
 
+
         public IActionResult LogOut()
         {
             return View();
         }
+
         [AllowAnonymous]
         [HttpPost]
         public IActionResult LogoutUser()
@@ -145,6 +163,7 @@ namespace ProjetoFinal.Controllers
             return (RedirectToAction("Index"));
         }
 
+        [Authorize]
         public IActionResult CreatePublication()
         {
             string token = HttpContext.Session.GetString("Token");
@@ -166,7 +185,7 @@ namespace ProjetoFinal.Controllers
             }
         }
 
-        
+        [Authorize]
         [HttpPost]
         public async Task<IActionResult> CreatePost(PostViewModel publication)
         {
@@ -183,6 +202,7 @@ namespace ProjetoFinal.Controllers
             }
         }
 
+        [Authorize]
         public IActionResult EditPublication(int id)
         {
             if(id==null || id == 0)
@@ -195,7 +215,7 @@ namespace ProjetoFinal.Controllers
             return View(pubFromDb);
         }
 
-
+        [Authorize]
         [HttpPost]
         public async Task<IActionResult> EditPublication(int id, Publication publication)
         {
@@ -203,13 +223,14 @@ namespace ProjetoFinal.Controllers
             return RedirectToAction(nameof(Profile));
         }
 
+        [Authorize]
         public IActionResult ConfirmDeletePost(int id)
         {
             var publication = publicationService.GetById(id);
             return View(publication);
         }
 
-
+        [Authorize]
         [HttpPost]
         public async Task<IActionResult> DeletePost(int id)
         {
@@ -217,6 +238,7 @@ namespace ProjetoFinal.Controllers
             return RedirectToAction(nameof(Profile));
         }
 
+        [Authorize]
         public IActionResult DeleteUser()
         {
             string token = HttpContext.Session.GetString("Token");
@@ -236,6 +258,7 @@ namespace ProjetoFinal.Controllers
             }
         }
 
+        [Authorize]
         [HttpPost]
         public async Task<IActionResult> Delete(int id)
         {
@@ -244,12 +267,14 @@ namespace ProjetoFinal.Controllers
             return RedirectToAction(nameof(Index));
         }
 
+        [Authorize]
         public IActionResult UpdateUser(int id)
         {
             var user = userService.GetById(id);
             return View(user);
         }
 
+        [Authorize]
         public IActionResult Update(User user)
         {
             var userToUpdate = userService.GetById(user.UserId);
@@ -265,6 +290,7 @@ namespace ProjetoFinal.Controllers
         }
 
         // Upload Image
+        [Authorize]
         [HttpPost("FileUpload")]
         public IActionResult UploadImage(IFormFile file)
         {

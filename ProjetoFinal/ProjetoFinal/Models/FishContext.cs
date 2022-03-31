@@ -16,7 +16,6 @@ namespace ProjetoFinal.Models
         {
             // optionsBuilder.UseMySQL("server=localhost;database=fish;" + "user=root;password=Password_123"); //sofia
             optionsBuilder.UseMySQL("server=localhost;database=fish;" + "user=root;password=password"); // sala
-
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
