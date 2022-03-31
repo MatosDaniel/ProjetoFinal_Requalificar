@@ -38,7 +38,7 @@
         <button class="btn btn-danger" type="submit">Delete User</button>
         <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="UpdateUser" asp-route-id="@Model.UserId">Edit</a>
     </form>
-    
+    <p> Total number of Gluglus: @Model.TotalPostByUser </p> @*Gluglus corresponde a tweets (é segundo a sofia o som que os peixes fazem)*@
 @foreach(var pub in Model.Publications)
 {
  <tr>

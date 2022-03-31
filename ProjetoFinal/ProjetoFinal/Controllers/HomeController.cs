@@ -142,8 +142,10 @@ namespace ProjetoFinal.Controllers
                     var user = userService.GetById(Convert.ToInt32(id));
 
                     var postsByUser = publicationService.GetPostById(user.UserId);
+                    var totalPosts = postsByUser.Count();
+
                     var profileViewModel = new ProfileViewModel { Email = user.Email, UserId = user.UserId, Username = user.Username, FirstName = user.FirstName, 
-                        LastName = user.LastName, Gender = user.Gender, Mobile = user.Mobile, Publications = postsByUser, ProfileImage = user.ProfileImage };
+                        LastName = user.LastName, Gender = user.Gender, Mobile = user.Mobile, Publications = postsByUser, ProfileImage = user.ProfileImage, TotalPostByUser = totalPosts };
                     
                     return View("Profile", profileViewModel);
                 }

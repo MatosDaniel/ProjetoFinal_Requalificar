@@ -12,5 +12,6 @@
         public int Mobile { get; set; }
         public string ProfileImage { get; set; } = Path.GetFileName("/images/default.jpg");
         public IEnumerable<Publication> Publications { get; set; }
+        public int TotalPostByUser { get; set; }
     }
 }
