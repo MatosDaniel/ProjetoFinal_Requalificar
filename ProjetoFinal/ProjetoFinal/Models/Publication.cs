@@ -9,6 +9,6 @@
         public DateTime Time { get; set; } = DateTime.Now; 
         public string Username { get; set; }
 
-        //public int Likes { get; set; }
+        public int Likes { get; set; }
     }
 }

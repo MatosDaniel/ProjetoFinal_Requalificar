@@ -325,5 +325,11 @@ namespace ProjetoFinal.Controllers
                 return RedirectToAction("Error");
             }
         }
+
+        public async Task<IActionResult> Likes(int id)
+        {
+            publicationService.Likes(id);
+            return RedirectToAction(nameof(Home));
+        }
     }
 }

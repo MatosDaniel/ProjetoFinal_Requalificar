@@ -48,6 +48,19 @@ namespace ProjetoFinal.Service
                 throw new NullReferenceException("Publication not found");
             }
         }
+        public void Likes(int id)
+        {
+            var pub = GetById(id);
+            if (pub is not null)
+            {
+                pub.Likes++;
+                context.SaveChanges();
+            }
+            else
+            {
+                throw new NullReferenceException("Publication not found");
+            }
+        }
 
         public IEnumerable<Publication> GetAll()
         {
