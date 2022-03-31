@@ -14,8 +14,8 @@ namespace ProjetoFinal.Models
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            // optionsBuilder.UseMySQL("server=localhost;database=fish;" + "user=root;password=Password_123"); //sofia
-            optionsBuilder.UseMySQL("server=localhost;database=fish;" + "user=root;password=password"); // sala
+            optionsBuilder.UseMySQL("server=localhost;database=fish;" + "user=root;password=Password_123"); //sofia
+            //optionsBuilder.UseMySQL("server=localhost;database=fish;" + "user=root;password=password"); // sala
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
