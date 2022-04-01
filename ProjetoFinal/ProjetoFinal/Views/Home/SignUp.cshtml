@@ -1,365 +1,164 @@
 ﻿@model ProjetoFinal.Models.User
 @{
-    ViewData["Title"] = "SignUp";
-    Layout = null;
+ViewData["Title"] = "SignUp";
+Layout = null;
 }
 
-<hr />
-@*<div class="row">
-    <div class="col-md-4">
-        <form asp-action="SignUp">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="Username" class="control-label"></label>
-                <input asp-for="Username" class="form-control" />
-                <span asp-validation-for="Username" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Password" class="control-label"></label>
-                <input asp-for="Password" class="form-control" />
-                <span asp-validation-for="Password" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Email" class="control-label"></label>
-                <input asp-for="Email" class="form-control" />
-                <span asp-validation-for="Email" class="text-danger"></span>
-            </div>      
-            <div class="form-group">
-                <label asp-for="FirstName" class="control-label"></label>
-                <input asp-for="FirstName" class="form-control" />
-                <span asp-validation-for="FirstName" class="text-danger"></span>
-            </div>     
-            <div class="form-group">
-                <label asp-for="LastName" class="control-label"></label>
-                <input asp-for="LastName" class="form-control" />
-                <span asp-validation-for="LastName" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Mobile" class="control-label"></label>
-                <input asp-for="Mobile" class="form-control" />
-                <span asp-validation-for="Mobile" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Gender" class="control-label"></label>
-                <input asp-for="Gender" class="form-control" />
-                <span asp-validation-for="Gender" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="SignUp" class="btn btn-primary" />
-            </div>
-        </form>
-    </div>
-</div>*@
-
-<div>
-    <a asp-action="Index">Login</a>
-</div>
-
- <body class="segoe">
+<body class="segoe">
     <form asp-action="SignUp">
-         <div class="topcontainer">
-             <div class="topbar">
-                 <i class="fa fa-twitter logocenter" aria-hidden="true"></i>
-             </div>
+        <div class="topcontainer">
+            <div class="AppContent wrapper wrapper-signup" id="page-container">
+                <link rel="stylesheet" href="https://abs.twimg.com/a/1511833274/css/t1/t1_signup.bundle.css">
+                <div class="page-canvas">
+                    <div class="signup-wrapper">
+                        <h1 style="font-size: 40pt">
+                            Join Fish today.
+                        </h1>
+                        <br />
+                        <div class="t1-form signup " id="phx-signup-form">
+                            <div class="textbox">
+                                <div class="prompt name">
+                                    <div data-fieldname="name" class="field color-field">
+                                        <input type="text" placeholder="Username" asp-for="Username" size="200">
+                                        <span asp-validation-for="Username" class="text-danger"></span>
+                                    </div>
+                                </div>
+                                <div class="prompt name">
+                                    <div data-fieldname="name" class="field color-field">
+                                        <input type="text" placeholder="First Name" asp-for="FirstName">
+                                        <span asp-validation-for="FirstName" class="text-danger"></span>
+                                    </div>
+                                </div>
+                                <div class="prompt name">
+                                    <div data-fieldname="name" class="field color-field">
+                                        <input type="text" placeholder="Last Name" asp-for="LastName">
+                                        <span asp-validation-for="LastName" class="text-danger"></span>
+                                    </div>
+                                </div>
+                                <div class="prompt name">
+                                    <div data-fieldname="name" class="field color-field">
+                                        <input type="text" placeholder="Email" asp-for="Email">
+                                        <span asp-validation-for="Email" class="text-danger"></span>
+                                    </div>
+                                </div>
+                                <div class="prompt name">
+                                    <div data-fieldname="name" class="field color-field">
+                                        <input type="text" placeholder="Password" asp-for="Password">
+                                        <span asp-validation-for="Password" class="text-danger"></span>
+                                    </div>
+                                </div>
+                                <div class="prompt name">
+                                    <div data-fieldname="name" class="field color-field">
+                                        <input type="text" placeholder="Gender" asp-for="Gender">
+                                        <span asp-validation-for="Gender" class="text-danger"></span>
+                                    </div>
+                                </div>
+                                <div class="prompt name">
+                                    <div data-fieldname="name" class="field color-field">
+                                        <input type="text" placeholder="Mobile" asp-for="Mobile">
+                                        <span asp-validation-for="Mobile" class="text-danger"></span>
+                                    </div>
+                                </div>
+                                <br />
+                                <div class="doit">
+                                    <input type="submit" value="SignUp" id="submit_button" class="signup submit" />
+                                </div>
+                                <br />
+                                <div id="login-button">
+                                    <p> Already have an account? <a asp-action="Index">Login</a></p>
+                                </div>
+                                <br />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</body>
 
-             <div class="AppContent wrapper wrapper-signup" id="page-container">
-                 <link rel="stylesheet" href="https://abs.twimg.com/a/1511833274/css/t1/t1_signup.bundle.css">
-                 <div class="page-canvas">
-                     <div class="signup-wrapper">
-                         <h1 style="font-size: 45 pt">
-                             Join Fish today.
-                         </h1>
-                         <div class="t1-form signup " id="phx-signup-form">
-                             <div class="textbox">
-                                 <div class="prompt name">
-                                     <div data-fieldname="name" class="field">
-                                         <input type="text" placeholder="Username" id="full-name" asp-for="Username" size="200">
-                                         <span asp-validation-for="Username" class="text-danger"></span>
-                                     </div>
-                                 </div>
-                                 <div class="prompt name">
-                                     <div data-fieldname="name" class="field">
-                                         <input type="text" placeholder="First Name" id="full-name" asp-for="FirstName">
-                                         <span asp-validation-for="FirstName" class="text-danger"></span>
-                                     </div>
-                                 </div>
-                                 <div class="prompt name">
-                                     <div data-fieldname="name" class="field">
-                                         <input type="text" placeholder="Last Name" id="full-name" asp-for="LastName">
-                                         <span asp-validation-for="LastName" class="text-danger"></span>
-                                     </div>
-                                 </div>
-                                  <div class="prompt name">
-                                     <div data-fieldname="name" class="field">
-                                         <input type="text" placeholder="Email" id="full-name" asp-for="Email">
-                                         <span asp-validation-for="Email" class="text-danger"></span>
-                                     </div>
-                                 </div>
-                                  <div class="prompt name">
-                                     <div data-fieldname="name" class="field">
-                                         <input type="text" placeholder="Password" id="full-name" asp-for="Password">
-                                         <span asp-validation-for="Password" class="text-danger"></span>
-                                     </div>
-                                 </div>
-                                 <div class="prompt name">
-                                     <div data-fieldname="name" class="field">
-                                         <input type="text" placeholder="Gender" id="full-name" asp-for="Gender">
-                                         <span asp-validation-for="Gender" class="text-danger"></span>
-                                     </div>
-                                 </div>
-                                 <div class="prompt name">
-                                     <div data-fieldname="name" class="field">
-                                         <input type="text" placeholder="Mobile" id="full-name" asp-for="Mobile">
-                                         <span asp-validation-for="Mobile" class="text-danger"></span>
-                                     </div>
-                                 </div>
-                                @* <div class="prompt name">
-                                     <div data-fieldname="name" class="field">
-                                         <div class="sidetip">
-                                             <p id="uiderror" role="alert" class="blank invalid error">Write a user id</p>
-                                         </div>
-                                         <input type="text" placeholder="User Id" aria-required="true" maxlength="20" id="uid" class="">
-                                     </div>
-                                 </div>
+<style>
+    body {
+        color: #14171a;
+        font-size: 14px;
+        line-height: 20px;
+        font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+        margin-bottom: 0%;
+    }
 
-                                 <div class="prompt email">
-                                     <div data-fieldname="email" class="field">
-                                         <div class="sidetip">
-                                             <p id="emailerror" role="alert" class="invalid error">Please enter a valid email.</p>
-                                         </div>
-                                         <input type="text" placeholder="Email" aria-required="true" class="email-input" id="email">
-                                     </div>
-                                 </div>
-                                 <div class="prompt password">
-                                     <div data-fieldname="password" class="field">
-                                         <div class="sidetip">
-                                             <p id="passerror" role="alert" class="blank error">Please enter a password.</p>
-                                         </div>
-                                         <input type="password" placeholder="Password" aria-required="true" id="password">
-                                     </div>
-                                 </div>
-                             </div>*@
-                             <div class="doit">
-                                     <input type="submit" value="SignUp" id="submit_button" class="signup submit"/>
-                             </div>
-                         </div>
-                     </div>
-                 </div>
-             </div>
-         </div>
-         </div>
-         </form>
-     </body>
+    .margin-input {
+        margin-right: 80%;
+    }
 
-     <style>
-         body {
- color: #14171a;
- font-size: 14px;
- line-height: 20px;
- font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
- margin-bottom: 0%;
-}
+    .color-field {
+        width: 70%;
+    }
 
-.margin-input {
-    margin-right: 80%;
-}
+    .topbar {
+        background-image: url("https://abs.twimg.com/a/1512226556/img/t1/lohp_streams_header_bg_v4.png");
+        background-size: 100% 100%;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.25);
+        height: 46px;
+        position: relative;
+        width: 100%;
+        text-align: center;
+    }
 
-.topbar {
- background-image: url("https://abs.twimg.com/a/1512226556/img/t1/lohp_streams_header_bg_v4.png");
- background-size: 100% 100%;
- border-bottom: 1px solid rgba(0, 0, 0, 0.25);
- height: 46px;
- position: relative;
- width: 100%;
- text-align:center;
-}
+    body.segoe {
+        font-family: "Segoe UI", Arial, sans-serif;
+    }
 
-body.segoe {
- font-family: "Segoe UI",Arial,sans-serif;
-}
+    .page-canvas {
+        margin-top: 7%;
+        background-color: #fff;
+        opacity: 0.9;
+        border: 1px;
+        border-radius: 100px;
+    }
 
-.page-canvas
-{
-    background-color: #20B2AA;
-}
-.topbar .container {
- max-width: 1190px;
- height: 100%;
- text-align: center;
- width: auto;
- margin: 0 auto;
- position: relative;
-}
+    .topbar .container {
+        max-width: 1190px;
+        height: 100%;
+        text-align: center;
+        width: auto;
+        margin: 0 auto;
+        position: relative;
+    }
 
-.logocenter{
- font-size: 23px !important;
- margin-top: 11px;
- color:white;
-}
+    .logocenter {
+        font-size: 23px !important;
+        margin-top: 11px;
+        color: white;
+    }
 
-.topcontainer{
- background:#FFF;
- height: 100%;
-}
+    .topcontainer {
+        background-image: url("/background-images/signUp.jpg");
+        height: 100%;
+        background-size: cover;
+        margin-bottom: 15%;
+    }
 
-#submit_button {
- background-color: #1da1f2;
- /*border: 1px solid #1da1f2;*/
-/* border-radius: 100px;
-*/ box-shadow: none;
- color: #fff;
- font-size: 18px;
- font-weight: bold;
- height: auto;
- line-height: 24px;
- padding: 12px 20px;
- position: relative;
- text-align: center;
- /*white-space: nowrap;*/
- width: 392px;
-}
+    #login-button {
+        font-size: 13pt;
+    }
 
-.wallcontainer{
- width: 900px; overflow: hidden; margin:auto;
-}
+    #submit_button {
+        background-color: #1da1f2;
+        box-shadow: none;
+        color: #fff;
+        font-size: 18px;
+        font-weight: bold;
+        height: auto;
+        line-height: 24px;
+        padding: 12px 20px;
+        position: relative;
+        text-align: center;
+        width: 392px;
+    }
 
-.profilecard{
- width: 290px; float: left; background: #FFF; margin: 10px; position: relative;
-}
-
-.profilecardhead{
- background-color:#ff0000;height:95px;
-}
-
-.profilecardimagediv{
- margin:-30px 0 0 8px;padding:1px;background:#FFF;display:inline-block;border-radius:50%;
-}
-
-.profilecardimagediv img{
- width:72px;height:72px;border-radius:50%;box-sizing:border-box;border:2px solid #FFF;
-}
-
-.profilecardnameidcont{
- position:absolute;top:103px;left:90px;width:185px;
-}
-
-.profilecardnamecont{
- font-size:18px;font-weight:bold;line-height:25px;margin:-1px 0 -2px;max-width:100%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;word-wrap:normal
-}
-
-#profilecardname{
- color:inherit;text-transform:uppercase;
-}
-
-#profilecarduid{
- color:#667786;font-size:14px;padding-right:5px;text-transform:uppercase;
-}
-
-.profilecardstatsdiv{
- padding:16px;
-}
-
-.profilecardstatslist{
- table-layout:fixed;box-sizing:border-box;display:table;margin:0;min-width:100%;padding:0;list-style:outside none;
-}
-
-.profilecardstatslistitem{
- width:1%;vertical-align:bottom;display:table-cell;padding:0;box-sizing:border-box;line-height:1;overflow:hidden;transition:all 0.15s ease-in-out 0s;text-align:inherit;
-}
-
-.dispblk{
- display:block;
-}
-
-.statslistitemhead{
- color:#657786;font-size:12px;font-weight:bold;letter-spacing:0,02em;line-height:16px;overflow:hidden;transition:color 0.15s ease-in-out 0s;display:block;
-}
-
-.statslistitemcount{
- display:block;font-size:18px;font-weight:bold;padding-top:3px;transition: color .15s ease-in-out 0s;color:#ff0000;
-}
-
-.rightcontainer{
- width:580px;float:right;margin-top:10px;margin-right:10px;
-}
-
-.posttweetcontainer{
- background:#ffe5e5;padding:10px 12px;position:relative;
-}
-
-.posttweetprofimg{
- width:32px;height:32px;position:absolute;left:28px;top:13px;border-radius:50%;
-}
-
-.ml56px{
- margin-left:56px;
-}
-
-.ml58px{
- margin-left:58px;
-}
-
-.mt10px{
- margin-top: 10px;
-}
-
-.posttweettacontainer{
- border-radius: 8px; border: 1px solid rgb(255, 153, 153); border-image: none; line-height: 20px; box-shadow: 0px 0px 0px 1px #ff9999; background-color: rgb(255, 255, 255);
-}
-
-.posttweetta{
- border-width: 1px 1px 0px; border-style: solid solid none; border-color: rgb(230, 236, 240) rgb(230, 236, 240) currentColor; margin: 0px; padding: 8px; outline: 0px; border-radius: 8px; border-image: none; width: 100%; height: 50px; font-family: "Segoe UI",Arial,sans-serif; font-size: 14px; box-sizing: border-box; opacity: 0.8; background-color: rgb(255, 255, 255);
-}
-
-.posttweetcountcont{
- overflow: hidden; margin-top: 10px;
-}
-
-.posttweetcount{
- margin-right: 10px; display: block; float: right;
-}
-
-.posttweetbutcont{
- overflow: hidden; margin-top: 10px;
-}
-
-.posttweetbut{
- padding: 6px 16px; border-radius: 100px; border: 1px solid rgb(255, 50, 50); border-image: none; text-align: center; color: rgb(255, 255, 255); line-height: 20px; font-size: 14px; font-weight: bold; white-space: nowrap; position: relative; cursor: pointer; float: right; box-shadow: none; background-color: rgb(255, 50, 50);
-}
-
-.tweetscontainer{
- background: rgb(255, 255, 255); list-style: none; margin: 0px; padding: 0px;
-}
-
-.tweetcontainer{
- margin: 0px; padding: 10px; overflow: hidden; border-bottom-color: rgb(230, 236, 240); border-bottom-width: 1px; border-bottom-style: solid;
-}
-
-.tweetprofimg{
- border-radius: 50%; width: 48px; height: 48px; margin-right: 10px; float: left;
-}
-
-.tweetprofname{
- color:#14171a;font-size:14px;font-weight:bold;
-}
-
-.tweetprofuid{
- color:#657786;font-size:14px;margin-left:5px;
-}
-
-.tweetstats{
- margin-right: 30px; cursor: pointer;
-}
-
-.tweetstats i{
- color: rgb(101, 119, 134); font-size: 16px;
-}
-
-.tweetstatscount{
- color: rgb(101, 119, 134); line-height: 1; font-size: 12px; font-weight: bold; margin-left: 6px;
-}
-
-.red i, .red span{
- color:#f00 !important;
-}
-     </style>
+    .wallcontainer {
+        width: 900px;
+        overflow: hidden;
+        margin: auto;
+    }
+</style>

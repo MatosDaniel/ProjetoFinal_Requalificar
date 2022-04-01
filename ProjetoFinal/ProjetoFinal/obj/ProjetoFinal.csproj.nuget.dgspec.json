@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\sofii\\Documents\\GitHub\\ProjetoFinal_Requalificar\\ProjetoFinal\\ProjetoFinal\\ProjetoFinal.csproj": {}
+    "C:\\Users\\Net18\\Documents\\GitHub\\ProjetoFinal_Requalificar\\ProjetoFinal\\ProjetoFinal\\ProjetoFinal.csproj": {}
   },
   "projects": {
-    "C:\\Users\\sofii\\Documents\\GitHub\\ProjetoFinal_Requalificar\\ProjetoFinal\\ProjetoFinal\\ProjetoFinal.csproj": {
+    "C:\\Users\\Net18\\Documents\\GitHub\\ProjetoFinal_Requalificar\\ProjetoFinal\\ProjetoFinal\\ProjetoFinal.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\sofii\\Documents\\GitHub\\ProjetoFinal_Requalificar\\ProjetoFinal\\ProjetoFinal\\ProjetoFinal.csproj",
+        "projectUniqueName": "C:\\Users\\Net18\\Documents\\GitHub\\ProjetoFinal_Requalificar\\ProjetoFinal\\ProjetoFinal\\ProjetoFinal.csproj",
         "projectName": "ProjetoFinal",
-        "projectPath": "C:\\Users\\sofii\\Documents\\GitHub\\ProjetoFinal_Requalificar\\ProjetoFinal\\ProjetoFinal\\ProjetoFinal.csproj",
-        "packagesPath": "C:\\Users\\sofii\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\sofii\\Documents\\GitHub\\ProjetoFinal_Requalificar\\ProjetoFinal\\ProjetoFinal\\obj\\",
+        "projectPath": "C:\\Users\\Net18\\Documents\\GitHub\\ProjetoFinal_Requalificar\\ProjetoFinal\\ProjetoFinal\\ProjetoFinal.csproj",
+        "packagesPath": "C:\\Users\\Net18\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Net18\\Documents\\GitHub\\ProjetoFinal_Requalificar\\ProjetoFinal\\ProjetoFinal\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\sofii\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Net18\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [

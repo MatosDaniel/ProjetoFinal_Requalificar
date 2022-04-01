@@ -1,10 +1,133 @@
 ﻿@model ProjetoFinal.Models.User
 @{
-    ViewData["Title"] = "Login";
+ViewData["Title"] = "Login";
+Layout = null;
 }
-<h1>@ViewData["Title"]</h1>
-<hr />
-<div class="row">
+
+<body class="segoe">
+    <form asp-action="Login">
+        <div class="topcontainer">
+            <div class="AppContent wrapper wrapper-signup" id="page-container">
+                <link rel="stylesheet" href="https://abs.twimg.com/a/1511833274/css/t1/t1_signup.bundle.css">
+                <div class="page-canvas">
+                    <div class="signup-wrapper">
+                        <h1 style="font-size: 30pt">
+                            Welcome back Fish!
+                        </h1>
+                        <br />
+                        <div class="t1-form signup " id="phx-signup-form">
+                            <div class="textbox">
+                                <div class="prompt name">
+                                    <div data-fieldname="name" class="field color-field">
+                                        <input type="text" placeholder="Email" asp-for="Email" size="200">
+                                        <span asp-validation-for="Email" class="text-danger"></span>
+                                    </div>
+                                </div>
+                                <div class="prompt name">
+                                    <div data-fieldname="name" class="field color-field">
+                                        <input type="password" placeholder="Password" asp-for="Password">
+                                        <span asp-validation-for="Password" class="text-danger"></span>
+                                    </div>
+                                </div>
+                                <br />
+                                <div class="doit">
+                                    <input type="submit" value="Login" id="submit_button" class="signup submit" />
+                                </div>
+                                <br />
+                                <div id="login-button">
+                                    <p> Still don't have an account?<a asp-action="SignUp">     Sign Up</a></p>
+                                </div>
+                                <br />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</body>
+
+<style>
+    body {
+        color: #14171a;
+        font-size: 14px;
+        line-height: 20px;
+        font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+        margin-bottom: 0%;
+    }
+
+    .margin-input {
+        margin-right: 80%;
+    }
+
+    .color-field {
+        width: 70%;
+    }
+
+    .topbar {
+        background-image: url("https://abs.twimg.com/a/1512226556/img/t1/lohp_streams_header_bg_v4.png");
+        background-size: 100% 100%;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.25);
+        height: 46px;
+        position: relative;
+        width: 100%;
+        text-align: center;
+    }
+
+    body.segoe {
+        font-family: "Segoe UI", Arial, sans-serif;
+    }
+
+    .page-canvas {
+        margin-top: 25%;
+        background-color: #fff;
+        opacity: 0.9;
+        border: 1px;
+        border-radius: 100px;
+    }
+
+    .topbar .container {
+        max-width: 1190px;
+        height: 100%;
+        text-align: center;
+        width: auto;
+        margin: 0 auto;
+        position: relative;
+    }
+
+    .logocenter {
+        font-size: 23px !important;
+        margin-top: 11px;
+        color: white;
+    }
+
+    .topcontainer {
+        background-image: url("/background-images/signUp.jpg");
+        height: 100%;
+        background-size: cover;
+        margin-bottom: 0%;
+    }
+
+    #login-button {
+        font-size: 13pt;
+    }
+
+    #submit_button {
+        background-color: #1da1f2;
+        box-shadow: none;
+        color: #fff;
+        font-size: 18px;
+        font-weight: bold;
+        height: auto;
+        line-height: 24px;
+        padding: 12px 20px;
+        position: relative;
+        text-align: center;
+        width: 392px;
+    }
+</style>
+
+@*<div class="row">
     <div class="col-md-4">
         <form asp-action="Login">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
@@ -19,9 +142,11 @@
                 <span asp-validation-for="Password" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <input type="submit" value="Login" class="btn btn-primary"/> 
-                <a class="nav-link text-dark btn btn-info" asp-area="" asp-controller="Home" asp-action="SignUp">SignUp</a>
+                <input type="submit" value="Login" class="btn btn-primary" />
+                <a class="nav-link text-dark btn btn-info" asp-area="" asp-controller="Home"
+                    asp-action="SignUp">SignUp</a>
             </div>
         </form>
     </div>
 </div>
+*@
