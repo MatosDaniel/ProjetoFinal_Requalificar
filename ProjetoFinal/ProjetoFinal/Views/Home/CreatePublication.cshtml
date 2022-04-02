@@ -1,19 +1,19 @@
 ﻿@model ProjetoFinal.Models.PostViewModel
 <div class="row">
     <div class="col-md-4">
-        <form asp-action="CreatePost">
+        <form asp-action="CreatePublication">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="contentContainer">
 
                 <div class="twitter boxContainer">
-                <label class="twitter tweetHeader">Compose new Tweet</label>
-                <span class="close"></span>
+                <label class="twitter tweetHeader"><b>Compose new Gluglu</b></label>
                 <div class="lineSplit"></div>
                 <textarea class="messageBox" id="postMessage" asp-for="Text" placeholder="What's happening?"></textarea>
-                <label class="wordCounter" id="wordCounter">140</label>
-                <input type="submit" class="postButton" id="submitPost" value="Tweet"/>
+				<span asp-validation-for="Text" class="text-danger"></span>
+				<br />
+                <label class="wordCounter">The maximum number of characters is 140</label>
+                <input type="submit" class="postButton" id="submitPost" value="Gluglu"/>
                 </div>
-  
             </div>
              <input hidden asp-for=UserId value="@ViewData["UserId"]"/>
         </form>
@@ -21,21 +21,28 @@
 </div>
 
 <style>
+	body{
+		background-image: url("/background-images/mainbackground.jpg");
+		background-size: cover;
+		background-repeat: no-repeat;
+	}
+
     .contentContainer {
 	 left: 0;
 	 position: absolute;
 	 width: 100%;
-	 height: 100%;
-	 padding-top: 10%;
+	 height: 80%;
+	 padding-top: 5%;
 	 font-family: 'Roboto', sans-serif;
 }
  .twitter.boxContainer {
-	 width: 410px;
-	 height: 180px;
+	 width: 810px;
+	 height: 380px;
 	 margin: 0 auto;
 	 text-align: center;
 	 border-radius: 5px;
 	 background-color: #FFFFFF;
+
 }
  .twitter.boxContainer div.lineSplit {
 	 width: 100%;
@@ -43,25 +50,29 @@
 	 background: #dcdee3;
 }
  .twitter.boxContainer .tweetHeader {
-	 color: #8899a6;
-	 font-size: 15px;
+	 color: black;
+	 font-size: 21pt;
 	 font-weight: 500;
 	 overflow: hidden;
 	 line-height: 35px;
 	 margin-left: 30px;
+	 margin-top: 3%;
+	 margin-bottom: 3%;
+	 font-family: 'Oswald', sans-serif;
 }
  .twitter.boxContainer .messageBox {
 	 width: 93%;
 	 padding: 5px;
 	 resize: none;
-	 height: 60px;
+	 height: 150px;
 	 color: #292F33;
 	 display: block;
-	 font-size: 13px;
+	 font-size: 15pt;
 	 font-weight: 200;
 	 margin: 10px auto;
 	 border-radius: 3px;
 	 border: 1px solid #a3d4f2;
+	 margin-top: 50px;
 }
  .twitter.boxContainer .messageBox:focus {
 	 outline: none;
@@ -72,31 +83,26 @@
 	 display: inline-block;
 	 width: 70%;
 	 border: 0;
-	 padding: 0 15px;
+	 margin-left: -8%;
 	 position: relative;
-	 vertical-align: top;
-	 top: 10px;
-	 text-align: right;
+	 text-align: left;
 	 font-size: 14px;
 	 text-shadow: 0 1px 1px rgba(255,255,255,0.75);
 }
  .twitter.boxContainer .postButton {
-	 width: 80px;
-	 height: 35px;
+	 width: 90px;
+	 height: 40px;
 	 border: none;
 	 float: right;
 	 color: #FFFFFF;
 	 display: block;
 	 cursor: pointer;
-	 font-size: 12px;
+	 font-size: 15px;
 	 font-weight: 500;
 	 border-radius: 3px;
-	 margin: 0 10px 0 0;
+	 margin: -10px 27px 0px 5px;
 	 background-color: #1b95e0;
 	 box-shadow: 0 1px 1px rgba(0,0,0,0.05);
-	 padding-left: 20px;
-	 background-image: url(data:image/png;
-	base64,iVBORw0KGgoAAAANSUhEUgAAASgAAAEiCAMAAAB9Qr9NAAAAM1BMVEX////////////////////////////////////////////////////////////////////lEOhHAAAAEHRSTlMAECAwQFBgcICQoLDA0ODwVOCoyAAABQRJREFUeAHs2EFuwkAMhlEnTScIyIzvf9p2QyEQK+r+vSN88sL6AwAAAAAAAAAAAAAA+BfmdVuC80qZeQnOK/3agtLUbvknKCzXkS+CI/Pacy/4tNzy3Ra8mdaen9ZgZ76OPDCm4MVyz2MteGo9Cz14mC49Sy14ZBpZu0dFpp0lajIVByVTbY6aTE/XoI085deM757nTHZfP+zdzZKkKBiFYUBURH7O/V/t9KInYqajtE+hVmac/N51Vy+eKkgkFQuYmncfnc8gsrVm6uCq7ieKL8udFhvYovuJ8KqyOynsoCtODYp3Wjv4ghgU7zRVnNbKr7b0u8VJQfFOPuGwvs2Te1Hv5hTbm24RvJeT33DS7j4LKo+uCZI2FO+04bzto6Dy6Icd0ISheKeV/GEBqCtOvoBpD5JQvFPsIMtBFopwSuDryctDZX7Y8VSCUJkfdm9I9XKnBKbXU73Yye8YLIlCZX6RyRUEoGinuWO03QlAsU4rxosCUKxTxnjFCUBxTr7iQkEAinOaGi6U3PtA5XRT65dOHReq/o2gonuwBVfqk9OHet5JCCrjSntw+lAXnXpJ0VEJQA1e3bWS5uCIBKAGl0+9bGt0RCJQA06tpCV6RyQDNeDUU3BEWlADTpic04finQzq8uVdXz8Vyvfr++L6UIPbKjnoQ/FOBJU+FOFEUOlDEU5E2etD8U7EtK4PVXC1vnwCVMYNVX2ojDtq8lAJt7SpQy24pe7FoeabnCanDTX1B5wEofw9Ttk7bShfcb2WgvwlzI6L1bx8wkXxhiuVFPX3oy4uDFpeJ0ekATVhqLLN3hHJQPn+wB+SIlT9ntFOzEiSUJkmymkljFShFpCtjkgXaurPOk0iUL6BzI857SJQ+7O3QftWNKDWh5/U2KEBNYEPy8jvQQPKt2e3UCaIQO3PfhPluwjUim/XvkNVoAE1dQzUt+C4EkSgKgarK2M1QwQq4UJ1i+680EWgIq5WTg8dq9CA8g231A6sMkSgNtxUOtiSEIGKGI9Yr09dBOr6wDt18BUiUBvw5A0ZO0SgIvDkDRkrRKDuG3jzwaWwCNT26ETumwpUfHZlUKACVR89nSRBBSo96hShAhU6bqke/O8yUPtNTv5gWKtAzY86bVCBumkJ1cPBpbAMVHryzt+py0CFs3cjlHrNyVdIQB3M5D0v038k45y2UkecXIYMVKS/fvIxrimVUjr9jfEKHahKXYR8gRaXlFIuv+pHThN0oBb8vx7dbfmmA+X7g0+tJOhAJerHDCp0an4yqEw9+GtQgTuix6B26rlfg4rcc78GVaiZ3KAi9xZcgyrU5ZpB/TlDOYMan6EMiv7IMyjuD8qgIvf4j0EV6oVLBhW5f25QO7VtYFCB+27AoDK1NjCoAGoqN6hEbdgZlO/UVG5QCzeVG1SjTi8wqMhN5Qa1M3fQO4MK3OG0BrVxh9MaVKcWUQa1cOdnG1ShjoAyqMCdbGRQGzfyDKpRI8+gZm7kGVSmRp5BefzRalDUIqoF91UGtVOHiRlU4F6UZFArd4qfQVX8WwnuMIMK+F2J7iSDWrlTDg1qp173alAeAP7+UWdQC/dCToPKZXJEBhXccPZg4z/t0CEBAAAAw6D+rR/iZgIiIEqUKFEvUaJEiRIlSpQoUaJEiRIlqk+UKFGiRIkSJUqUKFGiRIkSJUqUKFGiRIkSJUqUKFGiAAAAAAAAAAAAAAAAoGFgJ6MP+LhP2QAAAABJRU5ErkJggg==);
 	 background-size: 22px;
 	 background-repeat: no-repeat;
 	 background-position: 5px 6px;

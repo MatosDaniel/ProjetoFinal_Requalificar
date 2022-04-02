@@ -1,23 +1,147 @@
 ﻿@model ProjetoFinal.Models.Publication
-
-<div class="row" method="post">
+<div class="row">
     <div class="col-md-4">
         <form asp-action="EditPublication">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="Text" class="control-label"></label>
-                <input asp-for="Text" class="form-control" />
-                <span asp-validation-for="Text" class="text-danger"></span>
+            <div class="contentContainer">
+
+                <div class="twitter boxContainer">
+                <label class="twitter tweetHeader"><b>Edit your Gluglu</b></label>
+                <div class="lineSplit"></div>
+                <textarea class="messageBox" asp-for="Text"></textarea>
+				<span asp-validation-for="Text" class="text-danger"></span>
+				<br />
+                <label class="wordCounter">The maximum number of characters is 140</label>
+                <input type="submit" class="postButton" id="submitPost" value="Gluglu"/>
+                </div>
             </div>
-            @*<div class="form-group">
-                <label asp-for="Img" class="control-label"></label>
-                <input asp-for="Img" type="file" name="file" />
-                <span asp-validation-for="Img" class="text-danger"></span>
-            </div>*@ 
-            <div class="form-group">
-                <input type="submit" value="Edit" class="btn btn-primary" />
-            </div>
-            <input hidden asp-for="User" value="@ViewData["UserId"]"/>
         </form>
     </div>
 </div>
+
+<style>
+	body{
+		background-image: url("/background-images/mainbackground.jpg");
+		background-size: cover;
+		background-repeat: no-repeat
+	}
+
+    .contentContainer {
+	 left: 0;
+	 position: absolute;
+	 width: 100%;
+	 height: 80%;
+	 padding-top: 5%;
+	 font-family: 'Roboto', sans-serif;
+}
+ .twitter.boxContainer {
+	 width: 810px;
+	 height: 380px;
+	 margin: 0 auto;
+	 text-align: center;
+	 border-radius: 5px;
+	 background-color: #FFFFFF;
+
+}
+ .twitter.boxContainer div.lineSplit {
+	 width: 100%;
+	 height: 1px;
+	 background: #dcdee3;
+}
+ .twitter.boxContainer .tweetHeader {
+	 color: black;
+	 font-size: 21pt;
+	 font-weight: 500;
+	 overflow: hidden;
+	 line-height: 35px;
+	 margin-left: 30px;
+	 margin-top: 3%;
+	 margin-bottom: 3%;
+	 font-family: 'Oswald', sans-serif;
+}
+ .twitter.boxContainer .messageBox {
+	 width: 93%;
+	 padding: 5px;
+	 resize: none;
+	 height: 150px;
+	 color: #292F33;
+	 display: block;
+	 font-size: 15pt;
+	 font-weight: 200;
+	 margin: 10px auto;
+	 border-radius: 3px;
+	 border: 1px solid #a3d4f2;
+	 margin-top: 50px;
+}
+ .twitter.boxContainer .messageBox:focus {
+	 outline: none;
+}
+ .twitter.boxContainer .wordCounter {
+	 background-color: transparent;
+	 color: #8899a6;
+	 display: inline-block;
+	 width: 70%;
+	 border: 0;
+	 margin-left: -8%;
+	 position: relative;
+	 text-align: left;
+	 font-size: 14px;
+	 text-shadow: 0 1px 1px rgba(255,255,255,0.75);
+}
+ .twitter.boxContainer .postButton {
+	 width: 90px;
+	 height: 40px;
+	 border: none;
+	 float: right;
+	 color: #FFFFFF;
+	 display: block;
+	 cursor: pointer;
+	 font-size: 15px;
+	 font-weight: 500;
+	 border-radius: 3px;
+	 margin: -10px 27px 0px 5px;
+	 background-color: #1b95e0;
+	 box-shadow: 0 1px 1px rgba(0,0,0,0.05);
+	 background-size: 22px;
+	 background-repeat: no-repeat;
+	 background-position: 5px 6px;
+	 border: 1px solid transparent;
+}
+ .twitter.boxContainer .postButton:hover, .twitter.boxContainer .postButton:visited {
+	 outline: none;
+}
+ .twitter.boxContainer .postButton:visited {
+	 outline: none;
+	 box-shadow: 0 0 1px 2px rgba(88,144,255,0.75), 0 1px 1px rgba(0,0,0,0.15);
+}
+ .twitter.boxContainer .postButton:active {
+	 background-color: #3B5998;
+	 border-color: #2f477a #314a7f #334c83;
+	 box-shadow: 0 0 1px 2px rgba(88,144,255,0.75), 0 1px 1px rgba(0,0,0,0.15);
+}
+ .twitter.boxContainer .close {
+	 cursor: pointer;
+	 float: right;
+	 margin: 12px;
+	 width: 10px;
+	 height: 10px;
+	 opacity: 0.6;
+}
+ .twitter.boxContainer .close:hover {
+	 opacity: 1;
+}
+ .twitter.boxContainer .close:before, .twitter.boxContainer .close:after {
+	 position: absolute;
+	 content: ' ';
+	 height: 13px;
+	 width: 2px;
+	 background-color: #333;
+}
+ .twitter.boxContainer .close:before {
+	 transform: rotate(45deg);
+}
+ .twitter.boxContainer .close:after {
+	 transform: rotate(-45deg);
+}
+ 
+</style>

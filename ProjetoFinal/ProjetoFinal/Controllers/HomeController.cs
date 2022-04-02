@@ -189,12 +189,12 @@ namespace ProjetoFinal.Controllers
 
         [Authorize]
         [HttpPost]
-        public async Task<IActionResult> CreatePost(PostViewModel publication)
+        public async Task<IActionResult> CreatePublication(PostViewModel publication)
         {
             if (ModelState.IsValid)
             {
                 User user = userService.GetById(publication.UserId);
-                Publication post = new Publication { Text = publication.Text, IdPub = publication.IdPub, Img = publication.Img, Time = publication.Time, User = user, Username = user.Username };
+                Publication post = new Publication { Text = publication.Text, IdPub = publication.IdPub, Time = publication.Time, User = user, Username = user.Username };
                 publicationService.Create(post);
                 return RedirectToAction("Home");
             }
