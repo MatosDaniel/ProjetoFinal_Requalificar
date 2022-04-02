@@ -1,27 +1,208 @@
 ﻿@model ErrorViewModel
 @{
     ViewData["Title"] = "Error";
+    Layout = null;
 }
-
-<h1 class="text-danger">Error.</h1>
-<h2 class="text-danger">An error occurred while processing your request.</h2>
-
-@if (Model?.ShowRequestId ?? false)
+@*@if (Model?.ShowRequestId ?? false)
 {
     <p>
         <strong>Request ID:</strong> <code>@Model?.RequestId</code>
     </p>
 }
-
 <h3>@Model.MessageError</h3>
 <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Take me back!</a>
-<h3>Development Mode</h3>
-<p>
-    Swapping to <strong>Development</strong> environment will display more detailed information about the error that occurred.
-</p>
-<p>
-    <strong>The Development environment shouldn't be enabled for deployed applications.</strong>
-    It can result in displaying sensitive information from exceptions to end users.
-    For local debugging, enable the <strong>Development</strong> environment by setting the <strong>ASPNETCORE_ENVIRONMENT</strong> environment variable to <strong>Development</strong>
-    and restarting the app.
-</p>
+*@
+<div class="fish">
+  <div class="fish-body">
+    <div class="eye">
+      <div class="pupil"></div>
+    </div>
+  </div>
+  <div class="fin"></div>
+  <div class="fin fin-bottom"></div>
+</div>
+
+<div class="bubbles bubble-1"></div>
+<div class="bubbles bubble-5"></div>
+<div class="bubbles bubble-2"></div>
+<div class="bubbles bubble-6"></div>
+<div class="bubbles bubble-3"></div>
+<div class="bubbles bubble-7"></div>
+<div class="bubbles bubble-4"></div>
+<div class="bubbles bubble-8"></div>
+
+<div class="errormessage">
+    <h2 id="opps"><b>Opps...</b></h2>
+    <h3 id="message">@Model.MessageError</h3>
+    <a  class="nav-link text-dark btn btn-light" asp-controller="Home" asp-action="Index">Take me back!</a>
+</div>
+
+<style>
+    body {
+  background-color: #42a1c6;
+}
+
+/* Franklin's Container */
+.fish {
+  width: 150px;
+  height: 100px;
+  animation: swim 3s infinite; 
+}
+
+/* Franklin */
+.fish-body {
+  position: relative;
+  margin-top: 30px;
+  margin-left: 40px;
+  background-color: orange;
+  border-radius: 50%;
+  width: 150px; 
+  height: 100px;
+}
+
+.eye {
+  position: absolute;
+  margin-left: 100px;
+  margin-top: 20px;
+  z-index: 1;
+  background-color: white;
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+}
+
+.pupil {
+  position: absolute;
+  z-index: 2;
+  margin-left: 5px;
+  margin-top: 5px;
+  background-color: black;
+  border-radius: 50%;
+  height: 10px;
+  width: 10px;
+}
+
+.fin {
+  margin-top: -100px; 
+  background-color: orange;
+  border-radius: 50%;
+  transform: rotate(40deg);
+  width: 80px;
+  height: 50px;
+}
+
+.fin-bottom {
+  margin-top: -10px;
+  transform: rotate(-40deg);
+}
+
+/* Bubbles */
+.bubbles {
+  position: absolute;
+  bottom: 0;
+  z-index: 5;
+  margin-right: 50px;
+  background-color: white;
+  border-radius: 50%;
+  opacity: .50;
+  width: 40px;
+  height: 40px;
+  animation: up 4s infinite;
+}
+
+.bubble-2 {
+  left: 350px;
+  animation: up 2s infinite;
+}
+
+.bubble-3 {
+  left: 750px;
+  opacity: .30;
+  animation: up 5s infinite;
+}
+
+.bubble-4 {
+  left: 1150px;
+  animation: up 6s infinite;
+}
+
+.bubble-5 {
+  left: 50px;
+  animation: up 5s infinite;
+}
+
+.bubble-6 {
+  left: 300px;
+  opacity: .30;
+  animation: up 3s infinite;
+}
+
+.bubble-7 {
+  left: 670px;
+  animation: up 4s infinite;
+}
+
+.bubble-8 {
+  left: 1050px;
+  opacity: .30;
+  animation: up 3s infinite;
+}
+
+/* Swim Animation */
+@@keyframes swim {
+  0% {
+    transform: translateY(-50px) translateX(0) rotate(30deg);
+  }
+  25% { 
+    transform: translateY(50px) translateX(250px) rotate(20deg);
+  }
+  50% {
+    transform: translateY(100px) translateX(500px);
+  }
+  75% {
+    transform: translateY(50px) translateX(850px) rotate(-20deg);
+  }
+  100% {
+    transform: translateY(-170px) translateX(1200px) rotate(-40deg);
+  }
+}
+
+/* Bubbles Animation */
+@@keyframes up {
+  100% {
+    transform: translateY(-800px);
+  }
+}
+
+.errormessage{
+    color: white;
+    margin-top: 13%;
+    text-align:center;
+}
+
+#opps{
+    font-size: 45pt;
+
+}
+
+#message{
+    font-size: 20pt;
+    margin-bottom: 4%;
+
+}
+
+a{
+    text-decoration: none;
+    color: black;
+    padding: 20px 40px;
+    background: white;
+    text-align:center;
+    text-transform: uppercase;
+    font-family: sans-serif;
+}
+
+a:hover{
+    box-shadow:5px 5px orange;
+    color: orange;
+}
+</style>
