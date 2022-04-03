@@ -2,52 +2,362 @@
 @{
     ViewData["Title"] = "Update User Details";
 }
+<div class="profile">
 
-
-<div class="text-center">
+  <div class="profile-picture">
     
-<h2>Update Your Profile Details</h2>
-
-<form asp-action="Update">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <input hidden asp-for="UserId"/>
-            <div class="form-group">
+    <a href=""><img src="/images/@Model.ProfileImage"></a>
+    <br>
+  </div>
+  <div class="profile-content">
+  <br />
+    <div class="content-left">
+    <form asp-action="Update">
+      <ul>
+          <input hidden asp-for="UserId"/>
+            <li><a>
                 <label asp-for="Username" class="control-label"></label>
-                <input asp-for="Username" class="form-control inputClass" />
+                <input asp-for="Username" class="form-control inputClass"/>
                 <span asp-validation-for="Username" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Password" class="control-label"></label>
-                <input asp-for="Password" class="form-control inputClass" />
-                <span asp-validation-for="Password" class="text-danger"></span>
-            </div>
-            <div class="form-group">
+            </a></li>
+            <li><a>
                 <label asp-for="FirstName" class="control-label"></label>
-                <input asp-for="FirstName" class="form-control" />
+                <input asp-for="FirstName" class="form-control inputClass"/>
                 <span asp-validation-for="FirstName" class="text-danger"></span>
-            </div>
-            <div class="form-group">
+            </a></li>
+            <li><a>
                 <label asp-for="LastName" class="control-label"></label>
-                <input asp-for="LastName" class="form-control" />
+                <input asp-for="LastName" class="form-control inputClass"/>
                 <span asp-validation-for="LastName" class="text-danger"></span>
-            </div>
-            <div class="form-group">
+            </a></li>
+            <li><a>
                 <label asp-for="Email" class="control-label"></label>
-                <input asp-for="Email" class="form-control" />
+                <input asp-for="Email" class="form-control inputClass"/>
                 <span asp-validation-for="Email" class="text-danger"></span>
-            </div>
-              <div class="form-group">
-                <label asp-for="Mobile" class="control-label"></label>
-                <input asp-for="Mobile" class="form-control" />
-                <span asp-validation-for="Mobile" class="text-danger"></span>
-            </div>
-            <div class="form-group">
+            </a></li>
+            <li><a>
+                <label asp-for="Password" class="control-label"></label>
+                <input asp-for="Password" class="form-control inputClass"/>
+                <span asp-validation-for="Password" class="text-danger"></span>
+            </a></li>
+            <li><a>
                 <label asp-for="Gender" class="control-label"></label>
-                <input asp-for="Gender" class="form-control" />
+                <input asp-for="Gender" class="form-control inputClass"/>
                 <span asp-validation-for="Gender" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Update" class="btn btn-primary" />
-            </div>
-        </form>
-        </div>
+            </a></li>
+            <li><a>
+                <label asp-for="Mobile" class="control-label"></label>
+                <input asp-for="Mobile" class="form-control inputClass"/>
+                <span asp-validation-for="Mobile" class="text-danger"></span>
+            </a></li>
+            <li style="text-align:center">
+                <a class="btn btn-info edit-user" asp-controller="Home" asp-action="Profile" asp-route-id="@Model.UserId"><span class="entypo-ccw"></span>Go back</a>
+                <button class="btn btn-danger edit-user" type="submit"><span class="entypo-pencil"></span>Save changes</button>
+            </li>
+      </ul>
+      </form>
+    </div>
+</div>
+</div>
+
+<style>
+[class*="entypo-"]:before {
+  font-family: 'entypo', sans-serif;
+}
+
+
+body{
+    	background-image: url("/background-images/mainbackground.jpg");
+		background-size: cover;
+		background-repeat: no-repeat;
+}
+
+.edit-user{
+    color:white;
+}
+
+.edit-user:hover{
+    color:grey;
+}
+
+.profile{
+  height:1200px;
+  width:1000px;
+  margin:0 auto;
+  border-radius:10px;
+  font-family:"Open Sans condensed";
+}
+
+.profile-banner{
+  height:30%;
+  width:100%;
+  background-image:url('/background-images/mainbackground.jpg');
+  background-size:100%;
+  border-radius:10px;
+}
+
+.profile-picture{
+  height:150px;
+  width:150px;
+  border-radius:50%;
+  margin: 0 auto;
+  top:-90px;
+  text-align:center;
+  border:5px solid #fff;
+}
+
+.profile-picture span{
+  font-size:20pt;
+}
+
+.profile-picture small{
+  font-size:13pt;
+  color:#cacaca;
+}
+
+.profile-picture img{
+  border-radius:50%;
+  height:100%;
+  width:100%;
+}
+
+.add-frnd{
+  width:90px;
+  position:absolute;
+  left:-130px;
+  top:100px;
+  background:#00A9FA;
+  padding:5px;
+  border-radius:10px;
+  font-size:13pt;
+  text-decoration:none;
+  color:#fff;
+  transition:0.5s;
+}
+
+.follow{
+  width:70px;
+  background:#00A9FA;
+  border-radius:10px;
+  font-size:13pt;
+  text-decoration:none;
+  color:#fff;
+  transition:0.5s;
+}
+
+.follow span{
+  font-size:13pt;
+}
+
+.add-frnd span{
+  font-size:13pt;
+}
+
+.follow:hover{
+  transition:0.5s;
+  background:#0079FA;
+}
+
+.add-frnd:hover{
+  transition:0.5s;
+  background:#0079FA;
+}
+
+.profile-content{
+  height:60%;
+  width:100%;
+}
+
+.profile-content div{
+  float:left;
+}
+
+.content-left{
+  height:300px;
+  width:45%;
+  border-radius:10px;
+  margin-left: 28%;
+}
+
+.content-middle{
+  height:100px;
+  width:65%;
+}
+
+.content-right{
+  height:300px;
+  width:10%;
+}
+
+.content-left ul{
+  list-style:none;
+  padding:0;
+  border:1px solid #f8f8f8;
+  border-radius: 10px;
+  background-color: white;
+}
+
+.content-left ul li{
+  padding:15px;
+  /* margin-top:5px; */
+  border-bottom:1px solid #f8f8f8;
+  background-color: white;
+}
+
+.content-left ul li:hover{
+  transition:0.5s;
+  background:#f8f8f8;
+}
+
+.content-left ul li a{
+  font-size:14pt;
+  color:#cacaca;
+}
+
+.content-left ul li span{
+  font-size:12pt;
+  margin-right:5px;
+}
+
+.content-md-left{
+  width:15%;
+  height:100%;
+  padding-top:20px;
+  text-align:center;
+}
+
+.content-md-left img{
+  height:85px;
+  border-radius:50%;
+}
+
+.content-md-middle{
+  width:85%;
+  height:250px;
+  padding-top:5px;
+}
+
+.post-title-name{
+  height:10%;
+  width:100%;
+  line-height:30px;
+  padding-left:10px;
+}
+
+.post-title-name a{
+  text-decoration:none;
+  color:#000;
+  font-size:14pt;
+  font-weight:bold;
+}
+
+.post-title-name a:hover{
+  transition:0.5s;
+  text-decoration:underline;
+  color:#121212;
+}
+
+.post-title-time{
+  height:5%;
+  width:100%;
+  font-size:10pt;
+  padding-left:10px;
+  transition:0.5s;
+  text-decoration:none;
+  margin-top:-20px;
+}
+
+.post-title-time a{
+  color:#cacaca;
+}
+
+.post-title-time a:hover{
+  transition:0.5s;
+  text-decoration:underline;
+}
+
+
+.post-desc{
+  width:100%;
+  height:385px;
+  padding-left:10px;
+  padding-top:10px;
+}
+
+.post-desc img{
+  margin-top:20px;
+  border-radius:10px;
+}
+
+.post-desc a:hover{
+  opacity:0.8;
+  transition:0.5s;
+}
+
+.post-info{
+  height:10%;
+  width:100%;
+  border-bottom:1px solid #f8f8f8;
+  margin-top:-10px;
+}
+
+.post-info ul{
+  list-style:none;
+  padding:0;
+}
+
+.post-info ul li{
+  float:left;
+  margin-right:5px;
+  border-right:1px solid #f8f8f8;
+}
+
+.post-info ul li a{
+  font-size:12pt;
+  text-decoration:none;
+  color:#cacaca;
+  /* border-right:1px solid #cacaca; */
+  padding-left:10px;
+  padding-right:10px;
+}
+
+.like:hover{
+  transition:0.5s;
+  color:#00A9FA;
+}
+
+.comment:hover{
+  transition:0.5s;
+  color:#121212;
+}
+
+.share:hover{
+  transition:0.5s;
+  color:#FAB35F;
+}
+
+.content-right ul{
+  padding:0;
+  list-style:none;
+}
+
+.content-right ul li{
+  height:50px;
+  width:50px;
+  display:block;
+  background:#f8f8f8;
+  text-align:center;
+  line-height:50px;
+  border-radius:50%;
+  margin-top:10px;
+}
+
+.content-right ul li a{
+  text-decoration:none;
+  color:#00A9FA;
+}
+
+.content-right ul li:hover{
+  background:#ededed;
+}
+</style>

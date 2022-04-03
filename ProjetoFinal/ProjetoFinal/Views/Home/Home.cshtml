@@ -26,45 +26,10 @@
                </div>
                </div>
                <br />
-            @*<tr>
-                <td>
-                    @item.Text
-                </td>
-                <td>
-                    @item.Username
-                </td>
-                <td>
-                    @item.Time
-                </td>
-                <td>
-                     <a asp-action="Likes" asp-route-id="@item.IdPub">Like</a> @item.Likes
-@*                  <a asp-action="EditPublication" asp-route-id="@item.IdPub">Edit</a> |
-                    <a asp-action="Details" asp-route-isbn="@item.ISBN">Details</a> |
-                    <a asp-action="Delete" asp-route-isbn="@item.ISBN">Delete</a>
-                </td>
-            </tr>*@
         }
     </tbody>
 </table>
-@*<div class="card">
-       <div class="containt">
-         <div class="top-bar">
-           <span><h4>@item.Username 
-             <i class="bi bi-patch-check-fill"></i></h4>
-           </span>
-         </div>
-         <div class="post">
-           <h3>@item.Text</h3>
-           <span>@item.Time</span>
-           <hr/>
-           <div class="stat">
-            <span><a asp-action="Likes" asp-route-id="@item.IdPub">Like</a><b>@item.Likes</b> Liked</span>
-           </div>
-           <hr/>
-         </div>
-       </div>
-     </div>
-</div>*@
+
 
 <style>
     body{
@@ -73,22 +38,13 @@
           -moz-background-size: cover;
           -o-background-size: cover;
           background-size: cover;
- 		/*background-image: url("/background-images/mainbackground.jpg");
-		background-size: cover;
-		background-repeat: no-repeat;*/
     }
     .card{
   height:250px;
   width:750px;
-  background-color:white;
+  background-color: white;
   border-radius:15px;
   margin-left: 22%;
-  /*position: absolute;
-  margin: auto;
-  left: 0;
-  right: 0;
-  top: 0;
-  bottom: 0;*/
 }
 .containt{
   
@@ -240,21 +196,7 @@ color:#307ece;
 }
 
 .username-post{
-    font-size:15pt;
+    font-size:18pt;
+    font-weight: bold;
 }
-
-/*.heart {
-  background: url("https://abs.twimg.com/a/1454637594/img/t1/web_heart_animation.png")
-    no-repeat;
-  background-position: 0px;
-  height: 50px;
-  width: 50px;
-  cursor: pointer;
-}
-
-.heart:hover {
-  background-position: right;
-  transition: background-position 1s steps(28);
-  animation: heart-animate 1s steps(28) forwards;
-}*/
 </style>

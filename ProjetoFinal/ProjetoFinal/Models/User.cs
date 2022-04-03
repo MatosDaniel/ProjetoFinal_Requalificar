@@ -11,8 +11,12 @@ namespace ProjetoFinal.Models
                                  //https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/compiler-messages/cs0592?f1url=%3FappId%3Droslyn%26k%3Dk(CS0592)
         public string Username { get; set; }
 
+        [Display(Name = "First Name")]
         public string FirstName { get; set; }
+
+        [Display(Name = "Last Name")]
         public string LastName { get; set; }
+
         [EmailAddress]
         public string Email { get; set; }
 
