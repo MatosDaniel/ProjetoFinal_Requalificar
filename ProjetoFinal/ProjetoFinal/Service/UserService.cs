@@ -33,7 +33,6 @@ namespace ProjetoFinal.Service
             {
                 context.Users.Remove(user);
                 context.SaveChanges();
-
             }
 
             else

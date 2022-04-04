@@ -7,22 +7,16 @@ ViewData["Title"] = "Profile";
 
 <body>
     <div class="profile">
-
         <div class="profile-banner">
-
         </div>
         <div class="profile-picture">
-
             <a href=""><img src="/images/@Model.ProfileImage"></a>
             <span style="margin-top:50px">@Model.FirstName @Model.LastName</span>
             <br>
             <small>@Model.Username</small>
         </div>
-
         <div class="profile-content">
-
             <div class="content-left">
-
                 <ul>
                     <li><a><span class="entypo-book-open"></span> Total Gluglus: @Model.TotalPostByUser</a></li>
                     <form asp-action="DeleteUser" asp-route-id="@Model">
@@ -53,26 +47,25 @@ ViewData["Title"] = "Profile";
                         </form>
                     </li>
                 </ul>
-
             </div>
             <div class="right-side">
                 @foreach(var pub in Model.Publications)
                 {
-                <div class="tweet-wrap">
-                    <div class="tweet-header">
-                        <div class="tweet-header-info">
-                            @Model.Username
-                            <p id="gluglu">@pub.Text</p>
-                            <p>@pub.Likes likes &nbsp;&nbsp;&nbsp; @pub.Time</p>
-                            <p> <a class="btn btn-info" asp-action="EditPublication" asp-route-id="@pub.IdPub">Edit</a>
-                                |
-                                <a class="btn btn-danger" asp-action="ConfirmDeletePost"
-                                    asp-route-id="@pub.IdPub">Delete</a>
-                            </p>
+                    <div class="tweet-wrap">
+                        <div class="tweet-header">
+                            <div class="tweet-header-info">
+                                @Model.Username
+                                <p id="gluglu">@pub.Text</p>
+                                <p>@pub.Likes likes &nbsp;&nbsp;&nbsp; @pub.Time</p>
+                                <p> <a class="btn btn-info" asp-action="EditPublication" asp-route-id="@pub.IdPub">Edit</a>
+                                    |
+                                    <a class="btn btn-danger" asp-action="ConfirmDeletePost"
+                                        asp-route-id="@pub.IdPub">Delete</a>
+                                </p>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <br />
+                    <br />
                 }
             </div>
         </div>

@@ -19,7 +19,6 @@ namespace ProjetoFinal.Service
             context.Publications.Add(publication);
             context.SaveChanges();
             return publication;
-            
         }
 
         //Service that gets a single post by the post Id
@@ -47,7 +46,6 @@ namespace ProjetoFinal.Service
             {
                 context.Publications.Remove(pub);
                 context.SaveChanges();
-
             }
 
             else
