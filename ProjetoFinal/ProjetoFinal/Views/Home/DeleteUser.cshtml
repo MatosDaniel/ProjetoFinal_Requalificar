@@ -2,10 +2,10 @@
 
 <div class="card-confirm">
     <form asp-action="Delete" asp-route-id="@Model.UserId">
-        <p>You are about to delete your account. Are you really sure?</p>
-        <button class="btn btn-danger" type="submit">Confirm</button>
+        <p>You are about to delete your Fish account. Do you really want to explore the Ocean alone? </p>
+        <button class="btn btn-danger" type="submit">Yes</button>
         <a class="btn btn-dark" asp-area="" asp-controller="Home" asp-action="Profile"
-            asp-route-id="@Model.UserId">Cancel</a>
+            asp-route-id="@Model.UserId">No, because I'm Fish</a>
     </form>
 </div>
 

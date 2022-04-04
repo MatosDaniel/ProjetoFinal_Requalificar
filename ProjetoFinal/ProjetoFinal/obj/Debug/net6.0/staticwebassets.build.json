@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "y5AlBJgBxlbMZr1+K4hqgvwn76AvajH0HR0ncTx4t8k=",
+  "Hash": "SFnAKKrLZ2MPhmWJRIHkJxUKd6heU1Gmk0RKB3c/neA=",
   "Source": "ProjetoFinal",
   "BasePath": "_content/ProjetoFinal",
   "Mode": "Default",
@@ -102,12 +102,12 @@
       "OriginalItemSpec": "wwwroot\\background-images\\mainbackground.jpg"
     },
     {
-      "Identity": "C:\\Users\\Net18\\Documents\\GitHub\\ProjetoFinal_Requalificar\\ProjetoFinal\\ProjetoFinal\\wwwroot\\background-images\\signUp.jpg",
+      "Identity": "C:\\Users\\Net18\\Documents\\GitHub\\ProjetoFinal_Requalificar\\ProjetoFinal\\ProjetoFinal\\wwwroot\\background-images\\profile-banner.jpg",
       "SourceId": "ProjetoFinal",
       "SourceType": "Discovered",
       "ContentRoot": "C:\\Users\\Net18\\Documents\\GitHub\\ProjetoFinal_Requalificar\\ProjetoFinal\\ProjetoFinal\\wwwroot\\",
       "BasePath": "_content/ProjetoFinal",
-      "RelativePath": "background-images/signUp.jpg",
+      "RelativePath": "background-images/profile-banner.jpg",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -116,7 +116,7 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\background-images\\signUp.jpg"
+      "OriginalItemSpec": "wwwroot\\background-images\\profile-banner.jpg"
     },
     {
       "Identity": "C:\\Users\\Net18\\Documents\\GitHub\\ProjetoFinal_Requalificar\\ProjetoFinal\\ProjetoFinal\\wwwroot\\css\\site.css",
