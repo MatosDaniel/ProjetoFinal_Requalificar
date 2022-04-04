@@ -15,9 +15,10 @@ namespace ProjetoFinal.Models
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            //optionsBuilder.UseMySQL("server=localhost;database=fish;" + "user=root;password=Password_123"); //sofia
-            optionsBuilder.UseMySQL("server=localhost;database=fish;" + "user=root;password=password");
+            optionsBuilder.UseMySQL("server=socialfish.mysql.database.azure.com;database=fish;" + "user=fishadmin@socialfish;password=Password123");
         }
+
+        //Link para aceder ao site: fishsocial.azurewebsites.net
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

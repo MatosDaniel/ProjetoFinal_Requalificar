@@ -1,0 +1,96 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "ProjetoFinal, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+    "version": "1.0"
+  },
+  "paths": {
+    "/Home/Index": {
+      "post": {
+        "tags": [
+          "Home"
+        ],
+        "parameters": [
+          {
+            "in": "query",
+            "name": "UserId",
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "in": "query",
+            "name": "Username",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "FirstName",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "LastName",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "Email",
+            "type": "string",
+            "format": "email"
+          },
+          {
+            "in": "query",
+            "name": "Password",
+            "type": "string",
+            "maxLength": 25,
+            "minLength": 6
+          },
+          {
+            "in": "query",
+            "name": "Gender",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "Mobile",
+            "type": "integer",
+            "format": "int32",
+            "pattern": "^([0-9]{9})$"
+          },
+          {
+            "in": "query",
+            "name": "ProfileImage",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/FileUpload": {
+      "post": {
+        "tags": [
+          "Home"
+        ],
+        "consumes": [
+          "multipart/form-data"
+        ],
+        "parameters": [
+          {
+            "in": "formData",
+            "name": "file",
+            "type": "file"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    }
+  }
+}
