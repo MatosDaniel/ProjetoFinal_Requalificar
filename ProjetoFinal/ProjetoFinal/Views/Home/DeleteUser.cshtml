@@ -1,21 +1,22 @@
 ﻿@model ProjetoFinal.Models.UserViewModel
 
 <div class="card-confirm">
-<form asp-action="Delete" asp-route-id="@Model.UserId">
+    <form asp-action="Delete" asp-route-id="@Model.UserId">
         <p>You are about to delete your account. Are you really sure?</p>
         <button class="btn btn-danger" type="submit">Confirm</button>
-        <a class="btn btn-dark" asp-area="" asp-controller="Home" asp-action="Profile" asp-route-id="@Model.UserId">Cancel</a>
-</form>
+        <a class="btn btn-dark" asp-area="" asp-controller="Home" asp-action="Profile"
+            asp-route-id="@Model.UserId">Cancel</a>
+    </form>
 </div>
 
 <style>
-    body{
+    body {
         background-image: url("/background-images/mainbackground.jpg");
-		background-size: cover;
-		background-repeat: no-repeat;
+        background-size: cover;
+        background-repeat: no-repeat;
     }
 
-    .card-confirm{
+    .card-confirm {
         background-color: white;
         margin-left: 20%;
         margin-right: 20%;
@@ -25,6 +26,4 @@
         border: 1px;
         border-radius: 50px;
     }
-
-
 </style>
