@@ -1,14 +1,18 @@
 ﻿@model ErrorViewModel
 @{
-    ViewData["Title"] = "Error";
+    ViewData["Title"] = "Error Page";
     Layout = null;
 }
+
+@*Error page for when something goes wrong*@
+
 <head>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans+Condensed:wght@300;700&display=swap" rel="stylesheet">
-
+    <title>@ViewData["Title"]</title>
 </head>
+
 <div class="fish">
   <div class="fish-body">
     <div class="eye">
