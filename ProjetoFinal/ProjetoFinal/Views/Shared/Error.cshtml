@@ -3,15 +3,7 @@
     ViewData["Title"] = "Error";
     Layout = null;
 }
-@*@if (Model?.ShowRequestId ?? false)
-{
-    <p>
-        <strong>Request ID:</strong> <code>@Model?.RequestId</code>
-    </p>
-}
-<h3>@Model.MessageError</h3>
-<a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Take me back!</a>
-*@
+
 <div class="fish">
   <div class="fish-body">
     <div class="eye">
@@ -47,14 +39,12 @@
   font-family:"Open Sans condensed";
 }
 
-/* Franklin's Container */
 .fish {
   width: 150px;
   height: 100px;
   animation: swim 3s infinite; 
 }
 
-/* Franklin */
 .fish-body {
   position: relative;
   margin-top: 30px;
@@ -101,7 +91,6 @@
   transform: rotate(-40deg);
 }
 
-/* Bubbles */
 .bubbles {
   position: absolute;
   bottom: 0;
@@ -153,7 +142,6 @@
   animation: up 3s infinite;
 }
 
-/* Swim Animation */
 @@keyframes swim {
   0% {
     transform: translateY(-50px) translateX(0) rotate(30deg);
@@ -172,7 +160,6 @@
   }
 }
 
-/* Bubbles Animation */
 @@keyframes up {
   100% {
     transform: translateY(-800px);

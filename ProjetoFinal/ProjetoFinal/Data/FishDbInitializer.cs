@@ -8,22 +8,22 @@ namespace ProjetoFinal.Data
         {
             var user = new User()
             {
-                Username = "Pedrinho",
+                Username = "psantos",
                 FirstName = "Pedro",
                 LastName = "Santos",
                 Email = "pedrosantos@gmail.com",
-                Password = "batatasfritas",
+                Password = "password",
                 Gender = "Male",
                 Mobile = 937772380,
-                ProfileImage = "default.png"
+                ProfileImage = "default.jpg"
             };
             context.Users.Add(user);
 
             context.Publications.Add(new Publication
             {
-                Text = "Este é a primeira publicação no Fish",
+                Text = "This is my first Gluglu!",
                 User = user,
-                Username = "Pedrinho",
+                Username = "psantos",
             });
             context.SaveChanges();
         }

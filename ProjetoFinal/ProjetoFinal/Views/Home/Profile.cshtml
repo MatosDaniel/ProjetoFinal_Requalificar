@@ -3,6 +3,7 @@
     ViewData["Title"] = "User Details";
 }
 
+<body>
 <div class="profile">
   
   <div class="profile-banner">
@@ -57,7 +58,7 @@
             <div class="tweet-header">
                 <div class="tweet-header-info">
                 @Model.Username
-                    <p>@pub.Text</p>
+                    <p id="gluglu">@pub.Text</p>
                 <p>@pub.Likes likes &nbsp;&nbsp;&nbsp; @pub.Time</p> 
                 <p>   <a class="btn btn-info" asp-action="EditPublication" asp-route-id="@pub.IdPub">Edit</a> |
                       <a class="btn btn-danger" asp-action="ConfirmDeletePost" asp-route-id="@pub.IdPub">Delete</a></p>
@@ -67,8 +68,15 @@
     <br />
 }  
 </div>
+</div>
+</div>
+</body>
 
 <style>
+    body{
+        height:100%;
+    }
+
     .right-side{
         margin-left:3%;
         margin-top: 0%;
@@ -225,11 +233,6 @@ p{
   width:65%;
 }
 
-/*.content-right{
-  height:300px;
-  width:10%;
-}*/
-
 .content-left ul{
   list-style:none;
   padding:0;
@@ -239,22 +242,8 @@ p{
 
 .content-left ul li{
   padding:15px;
-  /* margin-top:5px; */
   border-bottom:1px solid #f8f8f8;
 }
-/*
-.content-right ul{
-  list-style:none;
-  padding:0;
-  border:1px solid #f8f8f8;
-  border-radius: 10px;
-}
-
-.content-right ul li{
-  padding:15px;
-  /* margin-top:5px; */
-  border-bottom:1px solid #f8f8f8;
-}*/
 
 .content-left ul li:hover{
   transition:0.5s;
@@ -368,7 +357,6 @@ p{
   font-size:12pt;
   text-decoration:none;
   color:#cacaca;
-  /* border-right:1px solid #cacaca; */
   padding-left:10px;
   padding-right:10px;
 }
@@ -411,6 +399,15 @@ p{
 
 .content-right ul li:hover{
   background:#ededed;
+}
+
+.container {
+    height: 100%;
+}
+
+#gluglu {
+    text-align: justify;
+    word-break:break-all;
 }
 </style>
 

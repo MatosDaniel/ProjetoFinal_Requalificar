@@ -11,10 +11,9 @@ Layout = null;
                 <link rel="stylesheet" href="https://abs.twimg.com/a/1511833274/css/t1/t1_signup.bundle.css">
                 <div class="page-canvas">
                     <div class="signup-wrapper">
-                        <h1 style="font-size: 40pt">
-                            Join Fish today.
+                        <h1 style="font-size: 30pt">
+                            Do you wanna be Fish? Join us today.
                         </h1>
-                        <br />
                         <div class="t1-form signup " id="phx-signup-form">
                             <div class="textbox">
                                 <div class="prompt name">
@@ -59,13 +58,13 @@ Layout = null;
                                         <span asp-validation-for="Mobile" class="text-danger"></span>
                                     </div>
                                 </div>
-                                <br />
+                                <p id="required">All fields are required.</p>
                                 <div class="doit">
-                                    <input type="submit" value="SignUp" id="submit_button" class="signup submit" />
+                                    <input type="submit" value="Sign Up" id="submit_button" class="signup submit" />
                                 </div>
                                 <br />
                                 <div id="login-button">
-                                    <p> Already have an account? <a asp-action="Index">Login</a></p>
+                                    <p> Are you already a Fish? <a asp-action="Index">Login</a></p>
                                 </div>
                                 <br />
                             </div>
@@ -87,6 +86,10 @@ Layout = null;
         line-height: 20px;
         font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
         margin-bottom: 0%;
+    }
+
+    #required{
+        color: red;
     }
 
     .margin-input {
@@ -112,7 +115,7 @@ Layout = null;
     }
 
     .page-canvas {
-        margin-top: 7%;
+        margin-top: 5%;
         background-color: #fff;
         opacity: 0.9;
         border: 1px;
