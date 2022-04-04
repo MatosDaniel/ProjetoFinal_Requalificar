@@ -2,6 +2,7 @@
 
 namespace ProjetoFinal.Service
 {
+    //Interface for all the services related to the user
     public interface IUserService
     {
         public abstract User GetById(int id);

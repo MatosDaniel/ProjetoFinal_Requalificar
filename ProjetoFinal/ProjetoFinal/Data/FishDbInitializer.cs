@@ -2,10 +2,12 @@
 
 namespace ProjetoFinal.Data
 {
+    //Initial data in the database
     public static class FishDbInitializer
     {
         public static void InsertData(FishContext context)
         {
+            //Table User
             var user = new User()
             {
                 Username = "dory",
@@ -19,12 +21,14 @@ namespace ProjetoFinal.Data
             };
             context.Users.Add(user);
 
+            //Table Publication
             context.Publications.Add(new Publication
             {
                 Text = "Hi, I'm Dory! Wait, what I was about to type?",
                 User = user,
                 Username = "dory",
             });
+
             context.SaveChanges();
         }
     }

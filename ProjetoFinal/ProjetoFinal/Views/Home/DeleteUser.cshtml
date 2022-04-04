@@ -1,4 +1,9 @@
 ﻿@model ProjetoFinal.Models.UserViewModel
+@{
+ViewData["Title"] = "Delete account";
+}
+
+@*Page that ask the user if the user wants to delete the account*@
 
 <div class="card-confirm">
     <form asp-action="Delete" asp-route-id="@Model.UserId">

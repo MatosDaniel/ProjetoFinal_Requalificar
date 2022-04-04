@@ -1,17 +1,15 @@
-﻿using System.ComponentModel.DataAnnotations;
-
-namespace ProjetoFinal.Models
+﻿namespace ProjetoFinal.Models
 {
-    public class Publication //Criação da classe Publication e dos seus atributos e propriedades
+    //Creating the Publication class and its attributes and properties
+    public class Publication
     {
         public int IdPub { get; set; }
-
-       
         public string Text { get; set; }
-        public User User { get; set; }  //Propriedade que relaciona a classe User com a classe Publication
+
+        //Property that relates the User class to the Publication class
+        public User User { get; set; }
         public DateTime Time { get; set; } = DateTime.Now; 
         public string Username { get; set; }
-
         public int Likes { get; set; }
     }
 }

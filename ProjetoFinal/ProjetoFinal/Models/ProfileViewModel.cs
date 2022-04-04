@@ -1,8 +1,8 @@
 ﻿namespace ProjetoFinal.Models
 {
+    //Model that combines the User and Publication Models
     public class ProfileViewModel
     {
-
         public string Username { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }

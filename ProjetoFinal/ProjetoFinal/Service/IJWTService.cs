@@ -2,6 +2,7 @@
 
 namespace ProjetoFinal.Service
 {
+    //Interface for the user authentication
     public interface IJWTService
     {
         string GenerateToken(string key, string issuer, string audience, User user);

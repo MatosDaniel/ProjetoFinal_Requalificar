@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "SFnAKKrLZ2MPhmWJRIHkJxUKd6heU1Gmk0RKB3c/neA=",
+  "Hash": "zGx4QQ46mUZVte4HspfmWJ3ZE4Yy9u+HC1OOKgwTIc4=",
   "Source": "ProjetoFinal",
   "BasePath": "_content/ProjetoFinal",
   "Mode": "Default",
@@ -168,6 +168,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\images\\default.jpg"
+    },
+    {
+      "Identity": "C:\\Users\\Net18\\Documents\\GitHub\\ProjetoFinal_Requalificar\\ProjetoFinal\\ProjetoFinal\\wwwroot\\images\\dory.jpg",
+      "SourceId": "ProjetoFinal",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Net18\\Documents\\GitHub\\ProjetoFinal_Requalificar\\ProjetoFinal\\ProjetoFinal\\wwwroot\\",
+      "BasePath": "_content/ProjetoFinal",
+      "RelativePath": "images/dory.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\dory.jpg"
     },
     {
       "Identity": "C:\\Users\\Net18\\Documents\\GitHub\\ProjetoFinal_Requalificar\\ProjetoFinal\\ProjetoFinal\\wwwroot\\js\\site.js",

@@ -2,6 +2,7 @@
 
 namespace ProjetoFinal.Models
 {
+    //Database connection
     public class FishContext : DbContext 
     {
         public DbSet<Publication> Publications { get; set; }
@@ -15,13 +16,14 @@ namespace ProjetoFinal.Models
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             //optionsBuilder.UseMySQL("server=localhost;database=fish;" + "user=root;password=Password_123"); //sofia
-            optionsBuilder.UseMySQL("server=localhost;database=fish;" + "user=root;password=password"); // sala
+            optionsBuilder.UseMySQL("server=localhost;database=fish;" + "user=root;password=password");
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
 
+            //Table User
             modelBuilder.Entity<User>(entity =>
             {
                 entity.HasKey(e => e.UserId);
@@ -32,6 +34,7 @@ namespace ProjetoFinal.Models
                 entity.Property(e => e.Password).IsRequired();
             });
 
+            //Table Publication
             modelBuilder.Entity<Publication>(entity =>
             {
                 entity.HasKey(e => e.IdPub);

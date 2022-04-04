@@ -1,14 +1,11 @@
-﻿using Microsoft.EntityFrameworkCore;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace ProjetoFinal.Models
 {
-    public class User //Criação da classe User e dos seus atributos e propriedades
+    //Creating the User class and its attributes and properties
+    public class User 
     {
         public int UserId { get; set; }
-
-        // [Index(IsUnique = true)] //https://docs.microsoft.com/en-us/ef/ef6/modeling/code-first/data-annotations
-                                 //https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/compiler-messages/cs0592?f1url=%3FappId%3Droslyn%26k%3Dk(CS0592)
         public string Username { get; set; }
 
         [Display(Name = "First Name")]
@@ -22,7 +19,6 @@ namespace ProjetoFinal.Models
 
         [StringLength(25, ErrorMessage ="Password must have a minimum of 6 characters and a maximum of 25", MinimumLength = 6)]
         public string Password { get; set; }
-
         public string Gender { get; set; }
 
         [RegularExpression(@"^([0-9]{9})$", ErrorMessage = "Invalid Phone Number.")]

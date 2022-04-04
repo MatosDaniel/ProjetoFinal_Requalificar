@@ -6,6 +6,7 @@ using System.Text;
 
 namespace ProjetoFinal.Service
 {
+    //Implementation of the interface for the JWT services
     public class JWTService : IJWTService
     {
         private const double EXPIRY_DURATION_MINUTES = 30;
@@ -16,7 +17,7 @@ namespace ProjetoFinal.Service
             new Claim(ClaimTypes.Name, user.Username),
             new Claim(ClaimTypes.Email, user.Email),
             new Claim(ClaimTypes.NameIdentifier, user.UserId.ToString())
-        };
+            };
 
             var securityKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(key));
 
@@ -48,13 +49,15 @@ namespace ProjetoFinal.Service
                     ValidAudience = audience,
                     IssuerSigningKey = mySecurityKey,
                 },
-                // passed by reference
+
                 out SecurityToken validatedToken);
             }
+
             catch
             {
                 return false;
             }
+
             return true;
         }
 
@@ -67,6 +70,7 @@ namespace ProjetoFinal.Service
                 var claimValue = securityToken.Claims.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier)?.Value;
                 return claimValue;
             }
+
             catch (Exception)
             {
                 return null;

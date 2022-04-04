@@ -1,5 +1,4 @@
 ﻿using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using ProjetoFinal.Models;
 using ProjetoFinal.Service;
@@ -24,6 +23,7 @@ namespace ProjetoFinal.Controllers
             this.hostEnvironment = hostEnvironment;
         }
 
+        //Endpoint that returns the Home Page with all the Gluglus
         [Authorize]
         public IActionResult Home(UserViewModel user)
         {
@@ -32,25 +32,21 @@ namespace ProjetoFinal.Controllers
             return View(publicationList);
         }
 
-        [Authorize]
-        public IActionResult Privacy()
-        {
-            return View();
-        }
-
-
+        //Endpoint that returns the Error Page
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error(string messageError)
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier, MessageError = messageError });
         }
 
+        //Endpoint that returns the Login Page
         [AllowAnonymous]
         public IActionResult Index()
         {
             return View();
         }
 
+        //Endpoint that login a User and attributes in a Token
         [AllowAnonymous]
         [Route("/Home/Index")]
         [HttpPost]
@@ -66,11 +62,12 @@ namespace ProjetoFinal.Controllers
 
             if(user is null)
             {
-                var error = new ErrorViewModel { MessageError = "The password or email is inconrrect. Try again." };
+                var error = new ErrorViewModel { MessageError = "The password or email is incorrect. Try again." };
                 return (RedirectToAction("Error", error));
             }
 
-            var validUser = new UserViewModel { Username = user.Username, UserId = user.UserId, FirstName = user.FirstName, LastName = user.LastName, Mobile = user.Mobile, Gender = user.Gender, Email = user.Email };
+            var validUser = new UserViewModel { Username = user.Username, UserId = user.UserId, FirstName = user.FirstName, LastName = user.LastName, 
+                Mobile = user.Mobile, Gender = user.Gender, Email = user.Email };
 
             if (validUser != null)
             {
@@ -84,25 +81,28 @@ namespace ProjetoFinal.Controllers
                 if (generatedToken != null)
                 {
                     HttpContext.Session.SetString("Token", generatedToken);
-                    return RedirectToAction("Home", validUser); //validUser
+                    return RedirectToAction("Home", validUser);
                 }
                 else
                 {
                     return (RedirectToAction("Error"));
                 }
             }
+
             else
             {
                 return (RedirectToAction("Error"));
             }
         }
 
+        //Endpoint that returns the Sign Up Page
         [AllowAnonymous]
         public IActionResult SignUp()
         {
             return View();
         }
 
+        //Endpoint that register a User
         [AllowAnonymous]
         [HttpPost]
         public IActionResult SignUp(User user)
@@ -126,37 +126,44 @@ namespace ProjetoFinal.Controllers
             }
         }
 
+        //Endpoint that return a Profile Page
         [Authorize]
         [HttpGet]
         public IActionResult Profile()
         {
-                string token = HttpContext.Session.GetString("Token");
+            string token = HttpContext.Session.GetString("Token");
 
-                if (token == null)
-                {
-                    return (RedirectToAction("Index"));
-                }
-                else
-                {
-                    var id = tokenService.GetJWTTokenClaim(token);
-                    var user = userService.GetById(Convert.ToInt32(id));
+            //Check if the User has a valid Token active, if not sends him to the Login Page
+            if (token == null)
+            {
+                return (RedirectToAction("Index"));
+            }
 
-                    var postsByUser = publicationService.GetPostById(user.UserId);
-                    var totalPosts = postsByUser.Count();
+            else
+            {
+                var id = tokenService.GetJWTTokenClaim(token);
+                var user = userService.GetById(Convert.ToInt32(id));
 
-                    var profileViewModel = new ProfileViewModel { Email = user.Email, UserId = user.UserId, Username = user.Username, FirstName = user.FirstName, 
-                        LastName = user.LastName, Gender = user.Gender, Mobile = user.Mobile, Publications = postsByUser, ProfileImage = user.ProfileImage, TotalPostByUser = totalPosts };
+                var postsByUser = publicationService.GetPostById(user.UserId);
+
+                //Count the total posts made by the user
+                var totalPosts = postsByUser.Count();
+
+                // Creates a Profile View Model based on the user and publication models
+                var profileViewModel = new ProfileViewModel { Email = user.Email, UserId = user.UserId, Username = user.Username, FirstName = user.FirstName, 
+                    LastName = user.LastName, Gender = user.Gender, Mobile = user.Mobile, Publications = postsByUser, ProfileImage = user.ProfileImage, TotalPostByUser = totalPosts };
                     
-                    return View("Profile", profileViewModel);
-                }
+                return View("Profile", profileViewModel);
+            }
         }
 
-
+        //Endpoint that return a Logout Page
         public IActionResult LogOut()
         {
             return View();
         }
 
+        //Endpoint that remove the Token, ending the user session
         [AllowAnonymous]
         [HttpPost]
         public IActionResult LogoutUser()
@@ -165,6 +172,7 @@ namespace ProjetoFinal.Controllers
             return (RedirectToAction("Index"));
         }
 
+        //Endpoint that returns the page that allows you to create a new Gluglu
         [Authorize]
         public IActionResult CreatePublication()
         {
@@ -179,7 +187,8 @@ namespace ProjetoFinal.Controllers
             {
                 var id = tokenService.GetJWTTokenClaim(token);
                 var user = userService.GetById(Convert.ToInt32(id));
-                var userViewModel = new UserViewModel { Email = user.Email, UserId = user.UserId, Username = user.Username, FirstName = user.FirstName, LastName = user.LastName, Gender = user.Gender, Mobile = user.Mobile };
+                var userViewModel = new UserViewModel { Email = user.Email, UserId = user.UserId, Username = user.Username, FirstName = user.FirstName, 
+                    LastName = user.LastName, Gender = user.Gender, Mobile = user.Mobile };
 
                 ViewBag.UserId = userViewModel.UserId;
 
@@ -187,6 +196,7 @@ namespace ProjetoFinal.Controllers
             }
         }
 
+        //Endpoint that creates a new Gluglu 
         [Authorize]
         [HttpPost]
         public async Task<IActionResult> CreatePublication(PostViewModel publication)
@@ -204,6 +214,7 @@ namespace ProjetoFinal.Controllers
             }
         }
 
+        //Endpoint that returns the page that allows you to edit a new Gluglu
         [Authorize]
         public IActionResult EditPublication(int id)
         {
@@ -211,12 +222,14 @@ namespace ProjetoFinal.Controllers
             {
                 return NotFound();
             }
+
             var pubFromDb = publicationService.GetById(id);
             ViewBag.User = pubFromDb.User;
       
             return View(pubFromDb);
         }
 
+        //Endpoint that edits a new Gluglu 
         [Authorize]
         [HttpPost]
         public async Task<IActionResult> EditPublication(int id, Publication publication)
@@ -225,6 +238,7 @@ namespace ProjetoFinal.Controllers
             return RedirectToAction(nameof(Profile));
         }
 
+        //Endpoint that returns the page that allows you to confirm if you want to delete a Gluglu
         [Authorize]
         public IActionResult ConfirmDeletePost(int id)
         {
@@ -232,6 +246,7 @@ namespace ProjetoFinal.Controllers
             return View(publication);
         }
 
+        //Endpoint that delete a Gluglu
         [Authorize]
         [HttpPost]
         public async Task<IActionResult> DeletePost(int id)
@@ -240,6 +255,7 @@ namespace ProjetoFinal.Controllers
             return RedirectToAction(nameof(Profile));
         }
 
+        //Endpoint that returns the page that allows you to confirm if you want to delete your Fish account
         [Authorize]
         public IActionResult DeleteUser()
         {
@@ -254,12 +270,14 @@ namespace ProjetoFinal.Controllers
             {
                 var id = tokenService.GetJWTTokenClaim(token);
                 var user = userService.GetById(Convert.ToInt32(id));
-                var userViewModel = new UserViewModel { Email = user.Email, UserId = user.UserId, Username = user.Username, FirstName = user.FirstName, LastName = user.LastName, Gender = user.Gender, Mobile = user.Mobile, ProfileImage = user.ProfileImage };
+                var userViewModel = new UserViewModel { Email = user.Email, UserId = user.UserId, Username = user.Username, FirstName = user.FirstName, 
+                    LastName = user.LastName, Gender = user.Gender, Mobile = user.Mobile, ProfileImage = user.ProfileImage };
 
                 return View(userViewModel);
             }
         }
 
+        //Endpoint that delete a Fish account
         [Authorize]
         [HttpPost]
         public async Task<IActionResult> Delete(int id)
@@ -269,6 +287,7 @@ namespace ProjetoFinal.Controllers
             return RedirectToAction(nameof(Index));
         }
 
+        //Endpoint that returns the page that allows you to edit your profile details
         [Authorize]
         public IActionResult UpdateUser(int id)
         {
@@ -276,22 +295,25 @@ namespace ProjetoFinal.Controllers
             return View(user);
         }
 
+        //Endpoint that edit your profile
         [Authorize]
         public IActionResult Update(User user)
         {
             var userToUpdate = userService.GetById(user.UserId);
+
             if (user is not null && userToUpdate is not null)
             {
                 userService.Edit(user.UserId, user);
                 return RedirectToAction(nameof(Profile));
             }
+
             else
             {
                 return RedirectToAction(nameof(Error));
             }
         }
 
-        // Upload Image
+        //Endpoint that uploads a new profile image
         [Authorize]
         [HttpPost("FileUpload")]
         public IActionResult UploadImage(IFormFile file)
@@ -302,12 +324,15 @@ namespace ProjetoFinal.Controllers
             {
                 return (RedirectToAction("Index"));
             }
+
             else
             {
                 var id = tokenService.GetJWTTokenClaim(token);
                 var user = userService.GetById(Convert.ToInt32(id));
-                var userViewModel = new UserViewModel { Email = user.Email, UserId = user.UserId, Username = user.Username, FirstName = user.FirstName, LastName = user.LastName, Gender = user.Gender, Mobile = user.Mobile, ProfileImage = user.ProfileImage };
+                var userViewModel = new UserViewModel { Email = user.Email, UserId = user.UserId, Username = user.Username, FirstName = user.FirstName, 
+                    LastName = user.LastName, Gender = user.Gender, Mobile = user.Mobile, ProfileImage = user.ProfileImage };
 
+                //Saves the profile pictures in a folder called Images, and creates one if there is none
                 string path = Path.Combine(this.hostEnvironment.WebRootPath, "images");
                 if (!Directory.Exists(path))
                 {
@@ -326,6 +351,7 @@ namespace ProjetoFinal.Controllers
             }
         }
 
+        //Endpoint that adds a like to a post
         public async Task<IActionResult> Likes(int id)
         {
             publicationService.Likes(id);

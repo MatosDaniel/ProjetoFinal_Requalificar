@@ -1,5 +1,6 @@
-﻿namespace ProjetoFinal
+﻿namespace ProjetoFinal.Models
 {
+    //Model for the error page
     public class ErrorViewModel
     {
         public string? RequestId { get; set; }

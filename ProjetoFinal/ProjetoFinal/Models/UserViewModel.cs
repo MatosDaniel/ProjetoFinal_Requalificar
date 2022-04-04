@@ -1,5 +1,6 @@
 ﻿namespace ProjetoFinal.Models
 {
+    //User model that does not have the property password
     public class UserViewModel
     {
         public string Username { get; set; }
